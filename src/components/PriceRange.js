@@ -14,9 +14,7 @@ const PriceRange = () => {
   return (
     <div
       style={{
-        margin: "auto",
         display: "block",
-        width: "fit-content",
       }}
     >
       <p className="text-xs mb-2"> بازه قیمتی خود را مشخص کنید:</p>

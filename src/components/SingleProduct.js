@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import productImg from "../assets/images/apple-watch-7.png";
 
 function SingleProduct({ product }) {
@@ -48,7 +49,9 @@ function SingleProduct({ product }) {
         <hr className="mt-2" />
         {/* add to cart */}
         <div className="text-center mt-1 py-1 text-red-500 cursor-pointer">
-          <button>مشاهده و سفارش</button>
+          <Link to={`/product/${product.title}`} state={{ product }}>
+            <button>مشاهده و سفارش</button>
+          </Link>
         </div>
       </div>
     </>

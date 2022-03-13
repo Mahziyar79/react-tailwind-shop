@@ -8,8 +8,8 @@ import ProductList from "../components/ProductList";
 
 function Home() {
   return (
-    <div className="bg-gray-100">
-      <AppBar />
+    <div>
+      <AppBar title="فروشگاه"/>
 
       <MobileHeadFilter />
 

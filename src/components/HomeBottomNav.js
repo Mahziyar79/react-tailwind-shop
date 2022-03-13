@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function HomeBottomNav() {
+  const [selectedItem, setSelectedItem] = useState(0);
+
   return (
     <>
       {/* bootom navigation */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 w-full">
         <div className="bg-white">
-          <ul
-            className="flex items-center justify-around py-2"
-          >
-            <li>
-              <a href="#" className="p-2 flex gap-x-2 items-center">
+          <ul className="flex items-center justify-around py-2">
+            <li onClick={() => setSelectedItem(0)}>
+              <Link to={"/"} className="p-2 flex gap-x-2 items-center">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -25,11 +26,11 @@ function HomeBottomNav() {
                     />
                   </svg>
                 </span>
-                <span>خانه</span>
-              </a>
+                {selectedItem === 0 && <span>خانه</span>}
+              </Link>
             </li>
-            <li>
-              <a href="#" className="flex gap-x-2 items-center p-2">
+            <li onClick={() => setSelectedItem(1)}>
+              <Link to={"/"} className="flex gap-x-2 items-center p-2">
                 <span>
                   <svg
                     width="34"
@@ -56,11 +57,11 @@ function HomeBottomNav() {
                     />
                   </svg>
                 </span>
-                <span>دسته بندی</span>
-              </a>
+                {selectedItem === 1 && <span>دسته بندی</span>}
+              </Link>
             </li>
-            <li>
-              <a href="#" className="flex gap-x-2 items-center p-2">
+            <li onClick={() => setSelectedItem(2)}>
+              <Link to={"/cart"} className="flex gap-x-2 items-center p-2">
                 <span>
                   <svg
                     width="34"
@@ -75,11 +76,11 @@ function HomeBottomNav() {
                     />
                   </svg>
                 </span>
-                <span>سبد خرید</span>
-              </a>
+                {selectedItem === 2 && <span>سبد خرید</span>}
+              </Link>
             </li>
-            <li>
-              <a href="#" className="flex gap-x-2 items-center p-2">
+            <li onClick={() => setSelectedItem(3)}>
+              <Link to={"/"} className="flex gap-x-2 items-center p-2">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -94,8 +95,8 @@ function HomeBottomNav() {
                     />
                   </svg>
                 </span>
-                <span>علاقه مندی ها</span>
-              </a>
+                {selectedItem === 3 && <span>علاقه مندی ها</span>}
+              </Link>
             </li>
           </ul>
         </div>

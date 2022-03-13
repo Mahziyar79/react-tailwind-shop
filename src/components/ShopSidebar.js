@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import PriceRange from "../data/PriceRange";
+import PriceRange from "./PriceRange";
 
 function ShopSidebar() {
   const [brandAccordion, setBrandAccordion] = useState(false);
