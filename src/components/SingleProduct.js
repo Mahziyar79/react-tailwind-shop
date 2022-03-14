@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import productImg from "../assets/images/apple-watch-7.png";
-
+import SeparateNumbers from "../common/SeparateNumbers";
 function SingleProduct({ product }) {
   return (
     <>
@@ -42,7 +42,7 @@ function SingleProduct({ product }) {
           </div>
           <div className="md:flex-1">
             <p className="text-bold text-sm text-left text-red-600">
-              {product.price}
+              {SeparateNumbers(product.price)} تومان
             </p>
           </div>
         </div>

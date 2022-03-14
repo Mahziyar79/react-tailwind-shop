@@ -30,7 +30,7 @@ function Cart() {
                 <h2 className="md:text-2xl mb-5 text-xl">دلت میاد سبد خریدت خالی باشه؟</h2>
                 <Link to={"/"}>
                   <button className="bg-red-400 w-32 rounded-md shadow-md text-white p-2">
-                    سبد خرید
+                     فروشگاه
                   </button>
                 </Link>
               </div>

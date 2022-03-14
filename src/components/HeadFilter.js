@@ -1,6 +1,6 @@
-import React from "react";
 
-function HeadFilter() {
+function HeadFilter({selectedHeaderFilter,setSelectedHeaderFilter}) {
+
   return (
     <>
       <div className="hidden md:block xl:col-span-10 md:col-span-9 ml-4 mt-4">
@@ -21,18 +21,52 @@ function HeadFilter() {
               />
             </svg>
           </div>
-          <button className="py-4 relative text-black">
+          <button
+            onClick={() => setSelectedHeaderFilter("popular")}
+            className={`py-4 relative ${
+              selectedHeaderFilter === "popular" ? "text-black" : ""
+            }`}
+          >
             <span>محبوب ترین</span>
-            <span className="bg-orange-600 w-2 h-2 absolute top-1 left-0 rounded-full"></span>
+            {selectedHeaderFilter === "popular" && (
+              <span className="bg-orange-600 w-2 h-2 absolute top-1 left-0 rounded-full"></span>
+            )}
           </button>
-          <button className="py-4 relative">
+          <button
+            onClick={() => setSelectedHeaderFilter("highPrice")}
+            className={`py-4 relative ${
+              selectedHeaderFilter === "highPrice" ? "text-black" : ""
+            }`}
+          >
             <span>گران ترین</span>
+            {selectedHeaderFilter === "highPrice" && (
+              <span className="bg-orange-600 w-2 h-2 absolute top-1 left-0 rounded-full"></span>
+            )}
           </button>
-          <button className="py-4 relative">
-            <span>ارزان ترین</span>
+          <button
+            onClick={() => setSelectedHeaderFilter("LowPrice")}
+            className={`py-4 relative ${
+              selectedHeaderFilter === "LowPrice" ? "text-black" : ""
+            }`}
+          >
+            <span>
+              {" "}
+              {selectedHeaderFilter === "LowPrice" && (
+                <span className="bg-orange-600 w-2 h-2 absolute top-1 left-0 rounded-full"></span>
+              )}
+              ارزان ترین
+            </span>
           </button>
-          <button className="py-4 relative">
+          <button
+            onClick={() => setSelectedHeaderFilter("seller")}
+            className={`py-4 relative ${
+              selectedHeaderFilter === "seller" ? "text-black" : ""
+            }`}
+          >
             <span>پرفروش ترین</span>
+            {selectedHeaderFilter === "seller" && (
+              <span className="bg-orange-600 w-2 h-2 absolute top-1 left-0 rounded-full"></span>
+            )}
           </button>
         </div>
       </div>

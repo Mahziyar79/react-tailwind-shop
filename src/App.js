@@ -7,11 +7,14 @@ import SingleProductPage from "./pages/SingleProductPage";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
 import CategoryPage from "./pages/CategoryPage";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
+        <ToastContainer />
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />

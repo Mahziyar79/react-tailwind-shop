@@ -2,6 +2,7 @@ import React from "react";
 import productImage from "../assets/images/iphone-13-pro-max.png";
 import { useDispatch ,useSelector} from "react-redux";
 import { addProduct } from "../redux/addProducts/productSlice";
+import SeparateNumbers from "../common/SeparateNumbers";
 
 function SingleProductPageComp({ product }) {
   const dispatch = useDispatch();
@@ -393,7 +394,7 @@ function SingleProductPageComp({ product }) {
               </div>
             </div>
             <div>
-              <p className="text-red-500 text-lg text-left">{product.price}</p>
+              <p className="text-red-500 text-lg text-left">{SeparateNumbers(product.price)} تومان</p>
             </div>
             <div>
               <button
