@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/Logo.png";
+import { useSelector } from 'react-redux'
+
 
 function Header() {
+  const productData = useSelector((state) => state.productReducer.cart)
+
   return (
     <>
       {/* header */}
@@ -21,7 +25,7 @@ function Header() {
                   <Link to={"/"}>خانه</Link>
                 </li>
                 <li className="hover:bg-slate-100 py-2 lg:px-3 md:px-1 rounded-md">
-                  <Link to={"/"}>فروشگاه</Link>
+                  <Link to={"/products"}>دسته بندی</Link>
                 </li>
                 <li className="hover:bg-slate-100 py-2 lg:px-3 md:px-1 rounded-md">
                   <Link to={"/about"}>ارتباط با ما</Link>
@@ -50,7 +54,7 @@ function Header() {
                   />
                 </svg>
                 <span className="bg-red-500 w-4 h-4 rounded-full absolute -top-2 -right-1 flex items-center justify-center text-white p-2 text-xs">
-                  1
+                  {productData.length}
                 </span>
               </div>
             </Link>

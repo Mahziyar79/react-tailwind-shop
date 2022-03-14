@@ -1,7 +1,12 @@
 import React from "react";
-import productImage from '../assets/images/iphone-13-pro-max.png';
+import productImage from "../assets/images/iphone-13-pro-max.png";
+import { useDispatch ,useSelector} from "react-redux";
+import { addProduct } from "../redux/addProducts/productSlice";
 
-function SingleProductPageComp({product}) {
+function SingleProductPageComp({ product }) {
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.productReducer.cart);
+  console.log(products);
   return (
     <div className="md:bg-white rounded-md md:p-4 md:mt-5">
       {/* single product */}
@@ -9,32 +14,16 @@ function SingleProductPageComp({product}) {
         <div className="md:flex-row flex flex-col md:flex-auto">
           {/* product image */}
           <div className="w-4/5 md:w-1/3 max-w-xs md:ml-10 md:mr-0 md:my-0 m-auto my-6 md:flex md:flex-col">
-            <img
-              className="h-auto w-full"
-              src={productImage}
-              alt="Logo"
-            />
+            <img className="h-auto w-full" src={productImage} alt="Logo" />
             <div className="justify-around mt-3 hidden md:flex gap-x-3">
               <div className="border-2 border-gray-300 rounded-lg p-1">
-                <img
-                  className="h-auto w-full"
-                  src={productImage}
-                  alt=""
-                />
+                <img className="h-auto w-full" src={productImage} alt="" />
               </div>
               <div className="border-2 border-gray-300 rounded-lg p-1">
-                <img
-                  className="h-auto w-full"
-                  src={productImage}
-                  alt=""
-                />
+                <img className="h-auto w-full" src={productImage} alt="" />
               </div>
               <div className="border-2 border-gray-300 rounded-lg p-1">
-                <img
-                  className="h-auto w-full"
-                  src={productImage}
-                  alt=""
-                />
+                <img className="h-auto w-full" src={productImage} alt="" />
               </div>
             </div>
           </div>
@@ -243,7 +232,9 @@ function SingleProductPageComp({product}) {
               <p className="md:text-lg text-base">ویژگی های کالا :</p>
               <ul className="mt-4 text-sm list-disc flex flex-col gap-y-2 marker:text-orange-500 list-inside">
                 <li>
-                  <span className="text-slate-600 lg:text-base">حافظه داخلی :</span>
+                  <span className="text-slate-600 lg:text-base">
+                    حافظه داخلی :
+                  </span>
                   <span>128 گیگابایت</span>
                 </li>
                 <li>
@@ -312,9 +303,7 @@ function SingleProductPageComp({product}) {
                     />
                   </svg>
                 </span>
-                <span className="text-sm mr-2">
-                  فروشنده : دیجی تایز
-                </span>
+                <span className="text-sm mr-2">فروشنده : دیجی تایز</span>
               </div>
               <div className="flex items-center justify-start">
                 <span>
@@ -335,9 +324,7 @@ function SingleProductPageComp({product}) {
                     />
                   </svg>
                 </span>
-                <span className="text-sm mr-2">
-                  گارانتی 18 ماه زرین
-                </span>
+                <span className="text-sm mr-2">گارانتی 18 ماه زرین</span>
               </div>
               <div className="flex items-center justify-start">
                 <span>
@@ -402,16 +389,17 @@ function SingleProductPageComp({product}) {
                     />
                   </svg>
                 </span>
-                <span className="text-sm mr-2">
-                  ارسال توسط : انبار تهران
-                </span>
+                <span className="text-sm mr-2">ارسال توسط : انبار تهران</span>
               </div>
             </div>
             <div>
               <p className="text-red-500 text-lg text-left">{product.price}</p>
             </div>
             <div>
-              <button className="bg-red-400 lg:text-md text-sm rounded-md shadow-md text-white py-3 px-2 w-full">
+              <button
+                onClick={() => dispatch(addProduct(product))}
+                className="bg-red-400 lg:text-md text-sm rounded-md shadow-md text-white py-3 px-2 w-full"
+              >
                 افزودن به سبد خرید
               </button>
             </div>

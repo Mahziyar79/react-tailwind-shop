@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/Logo.png";
+import { useSelector } from 'react-redux'
+
 
 function AppBar({ title }) {
+  const productData = useSelector((state) => state.productReducer.cart)
+
   return (
     <>
       {/* app bar */}
@@ -30,7 +34,7 @@ function AppBar({ title }) {
               />
             </svg>
             <span className="bg-red-500 w-4 h-4 rounded-full absolute -top-2 -right-1 flex items-center justify-center text-white p-2 text-xs">
-              1
+              {productData.length}
             </span>
           </div>
         </Link>
