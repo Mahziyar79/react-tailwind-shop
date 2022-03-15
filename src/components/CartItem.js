@@ -1,11 +1,11 @@
 import React from "react";
-import cartImg from "../assets/images/apple-watch-7.png";
 import {
   increamentProduct,
   decreamentProduct,
   deleteProduct,
 } from "../redux/addProducts/productSlice";
 import { useDispatch } from "react-redux";
+import SeparateNumbers from "../common/SeparateNumbers";
 
 function CartItem({ product }) {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ function CartItem({ product }) {
   return (
     <div className="bg-white p-3 flex gap-x-3 rounded-md">
       <div className="w-20 flex items-center">
-        <img src={cartImg} alt="" />
+        <img src={product.image} alt="" />
       </div>
       <div className="flex flex-col justify-between w-full gap-y-5">
         <div className="flex items-center justify-between">
@@ -42,7 +42,7 @@ function CartItem({ product }) {
           </button>
         </div>
         <div className="flex items-center justify-between">
-          <p className="text-orange-700">{product.price}</p>
+          <p className="text-orange-700">{SeparateNumbers(product.price)} تومان</p>
           <div className="flex items-center gap-x-2">
             <span
               onClick={() => {

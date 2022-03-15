@@ -34,13 +34,11 @@ export const productSlice = createSlice({
       const filterItem = state.cart.find((item) => item.id === action.payload);
       filterItem.quantity++;
       localStorage.setItem("cartItems", JSON.stringify(state.cart));
-      toast.info("یک عدد دیگر از این محصول به سبد خرید شما اضافه شد");
     },
     decreamentProduct: (state, action) => {
       const filterItem = state.cart.find((item) => item.id === action.payload);
       if (filterItem.quantity > 1) {
         filterItem.quantity--;
-        toast.error("یک عدد از این محصول از سبد خرید شما کم شد ");
       }
       localStorage.setItem("cartItems", JSON.stringify(state.cart));
     },

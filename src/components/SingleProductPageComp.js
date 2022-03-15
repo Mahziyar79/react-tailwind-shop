@@ -1,5 +1,5 @@
 import React from "react";
-import productImage from "../assets/images/iphone-13-pro-max.png";
+import productImage from "../assets/images/apple/iphone-13-pro-max.png";
 import { useDispatch ,useSelector} from "react-redux";
 import { addProduct } from "../redux/addProducts/productSlice";
 import SeparateNumbers from "../common/SeparateNumbers";
@@ -15,7 +15,7 @@ function SingleProductPageComp({ product }) {
         <div className="md:flex-row flex flex-col md:flex-auto">
           {/* product image */}
           <div className="w-4/5 md:w-1/3 max-w-xs md:ml-10 md:mr-0 md:my-0 m-auto my-6 md:flex md:flex-col">
-            <img className="h-auto w-full" src={productImage} alt="Logo" />
+            <img className="h-auto w-full" src={product.image} alt="Logo" />
             <div className="justify-around mt-3 hidden md:flex gap-x-3">
               <div className="border-2 border-gray-300 rounded-lg p-1">
                 <img className="h-auto w-full" src={productImage} alt="" />

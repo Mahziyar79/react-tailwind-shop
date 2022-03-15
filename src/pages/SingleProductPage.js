@@ -5,9 +5,8 @@ import CategorySidebar from "../components/CategorySidebar";
 import SingleProductPageComp from "../components/SingleProductPageComp";
 import { useLocation } from "react-router-dom";
 
-
 function SingleProductPage() {
-    const product = useLocation();
+  const product = useLocation();
   return (
     <>
       <AppBar />
@@ -18,12 +17,19 @@ function SingleProductPage() {
       <div className="2xl:container 2xl:max-w-screen-2xl 2xl:mx-auto grid grid-cols-12 md:gap-8 md:pb-8">
         <CategorySidebar />
         <div className="col-span-12 xl:col-span-10 md:col-span-9 md:ml-4 md:mt-4">
-          <div className="hidden md:flex px-4 items-center gap-x-2 bg-white">
-            <div className="p-4 flex items-center gap-x-2 rounded-md">
-              <Breadcrumbs />
+          {product.state && (
+            <div className="hidden md:flex px-4 items-center gap-x-2 bg-white">
+              <div className="p-4 flex items-center gap-x-2 rounded-md">
+                <Breadcrumbs />
+              </div>
             </div>
-          </div>
-          <SingleProductPageComp product={product.state.product}/>
+          )}
+
+          {product.state ? (
+            <SingleProductPageComp product={product.state.product} />
+          ) : (
+            <h2>محصول مورد نظر پیدا نشد!</h2>
+          )}
         </div>
       </div>
     </>

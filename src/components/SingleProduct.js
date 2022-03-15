@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import productImg from "../assets/images/apple-watch-7.png";
 import SeparateNumbers from "../common/SeparateNumbers";
 function SingleProduct({ product }) {
+
+  const queryUrl = product.title.split(' ').join('-');
+
   return (
     <>
       {/* single product */}
@@ -24,7 +26,7 @@ function SingleProduct({ product }) {
         </div>
         {/* product image */}
         <div className="bg-gray-100 rounded-md">
-          <img src={productImg} alt="watch" />
+          <img className="w-full h-[250px] object-contain" src={product.image} alt="watch" />
         </div>
         {/* color section */}
         <div className="flex items-center justify-between my-2">
@@ -49,7 +51,7 @@ function SingleProduct({ product }) {
         <hr className="mt-2" />
         {/* add to cart */}
         <div className="text-center mt-1 py-1 text-red-500 cursor-pointer">
-          <Link to={`/product/${product.title}`} state={{ product }}>
+          <Link to={`/product/${queryUrl}`} state={{ product }}>
             <button>مشاهده و سفارش</button>
           </Link>
         </div>
