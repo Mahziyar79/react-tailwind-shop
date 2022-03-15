@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import CategoryPage from "./pages/CategoryPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Signin from "./pages/Signin";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/products" element={<CategoryPage />} />
+            <Route path="/signin" element={<Signin />} />
             <Route path="/product/:name" element={<SingleProductPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

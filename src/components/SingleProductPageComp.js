@@ -1,6 +1,6 @@
 import React from "react";
 import productImage from "../assets/images/apple/iphone-13-pro-max.png";
-import { useDispatch ,useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../redux/addProducts/productSlice";
 import SeparateNumbers from "../common/SeparateNumbers";
 
@@ -229,7 +229,7 @@ function SingleProductPageComp({ product }) {
               </div>
             </div>
             {/* product info */}
-            <div className="mx-3 mt-5 text-slate-800 bg-white p-4 md:mb-0 rounded-lg md:bg-inherit md:p-0">
+            <div className="mx-3 mt-5 text-slate-800 bg-white p-4 md:mb-0 rounded-lg md:bg-inherit md:p-0 mb-24">
               <p className="md:text-lg text-base">ویژگی های کالا :</p>
               <ul className="mt-4 text-sm list-disc flex flex-col gap-y-2 marker:text-orange-500 list-inside">
                 <li>
@@ -254,6 +254,7 @@ function SingleProductPageComp({ product }) {
             </div>
           </div>
         </div>
+        {/* cart Info */}
         <div className="lg:w-1/4 w-full mt-4 lg:mt-0 hidden md:block">
           <div className="bg-gray-200 xl:p-5 p-3 rounded-md shadow-md flex flex-col gap-y-6">
             <div className="flex flex-col items-start gap-3 flex-wrap">
@@ -394,7 +395,9 @@ function SingleProductPageComp({ product }) {
               </div>
             </div>
             <div>
-              <p className="text-red-500 text-lg text-left">{SeparateNumbers(product.price)} تومان</p>
+              <p className="text-red-500 text-lg text-left">
+                {SeparateNumbers(product.price)} تومان
+              </p>
             </div>
             <div>
               <button
@@ -403,6 +406,21 @@ function SingleProductPageComp({ product }) {
               >
                 افزودن به سبد خرید
               </button>
+            </div>
+          </div>
+        </div>
+        {/* bottom navigation */}
+        <div className="md:hidden fixed bottom-0 left-0 right-0 w-full">
+          <div className="bg-white p-3 flex items-center justify-between shadow-[0_-4px_8px_0_rgba(0,0,0,0.1)]">
+            <button
+              onClick={() => dispatch(addProduct(product))}
+              className="bg-red-400 rounded-md shadow-md text-white py-2 px-4"
+            >
+              افزودن به سبد خرید
+            </button>
+            <div className="flex flex-wrap items-end gap-x-1">
+              <span> {SeparateNumbers(product.price)}</span>
+              <span>تومان</span>
             </div>
           </div>
         </div>

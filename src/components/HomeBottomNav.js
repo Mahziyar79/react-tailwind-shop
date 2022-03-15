@@ -1,108 +1,114 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-function HomeBottomNav() {
+const HomeBottomNav = () => {
   const [selectedItem, setSelectedItem] = useState(0);
+  const pageUrl = window.location.pathname;
+
+  useEffect(() => {
+    if (pageUrl === "/") {
+      setSelectedItem(0);
+    } else if (pageUrl === "/products") {
+      setSelectedItem(1);
+    } else if (pageUrl === "/cart") {
+      setSelectedItem(2);
+    } else if (pageUrl === "/signin") {
+      setSelectedItem(3);
+    }
+  }, []);
 
   return (
-    <>
-      {/* bootom navigation */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 w-full">
-        <div className="bg-white">
-          <ul className="flex items-center justify-around py-2">
-            <li onClick={() => setSelectedItem(0)}>
-              <Link to={"/"} className="p-2 flex gap-x-2 items-center">
-                <span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 32 32"
-                    fill="none"
-                  >
-                    <path
-                      d="M26.72 9.09357L19.04 3.72024C16.9467 2.25358 13.7333 2.33358 11.72 3.89358L5.03999 9.10691C3.70665 10.1469 2.65332 12.2802 2.65332 13.9602V23.1602C2.65332 26.5602 5.41332 29.3336 8.81332 29.3336H23.1867C26.5867 29.3336 29.3467 26.5736 29.3467 23.1736V14.1336C29.3467 12.3336 28.1867 10.1202 26.72 9.09357ZM17 24.0002C17 24.5469 16.5467 25.0002 16 25.0002C15.4533 25.0002 15 24.5469 15 24.0002V20.0002C15 19.4536 15.4533 19.0002 16 19.0002C16.5467 19.0002 17 19.4536 17 20.0002V24.0002Z"
-                      fill="#222F5D"
-                    />
-                  </svg>
-                </span>
-                {selectedItem === 0 && <span>خانه</span>}
-              </Link>
-            </li>
-            <li onClick={() => setSelectedItem(1)}>
-              <Link to={"/"} className="flex gap-x-2 items-center p-2">
-                <span>
-                  <svg
-                    width="34"
-                    height="34"
-                    viewBox="0 0 34 34"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M10.2568 2.8335H7.56516C4.46266 2.8335 2.8335 4.46266 2.8335 7.551V10.2427C2.8335 13.331 4.46266 14.9602 7.55099 14.9602H10.2427C13.331 14.9602 14.9602 13.331 14.9602 10.2427V7.551C14.9743 4.46266 13.3452 2.8335 10.2568 2.8335Z"
-                      fill="#222F5D"
-                    />
-                    <path
-                      d="M26.4492 2.8335H23.7575C20.6692 2.8335 19.04 4.46266 19.04 7.551V10.2427C19.04 13.331 20.6692 14.9602 23.7575 14.9602H26.4492C29.5375 14.9602 31.1667 13.331 31.1667 10.2427V7.551C31.1667 4.46266 29.5375 2.8335 26.4492 2.8335Z"
-                      fill="#222F5D"
-                    />
-                    <path
-                      d="M26.4492 19.0259H23.7575C20.6692 19.0259 19.04 20.655 19.04 23.7434V26.435C19.04 29.5234 20.6692 31.1525 23.7575 31.1525H26.4492C29.5375 31.1525 31.1667 29.5234 31.1667 26.435V23.7434C31.1667 20.655 29.5375 19.0259 26.4492 19.0259Z"
-                      fill="#222F5D"
-                    />
-                    <path
-                      d="M10.2568 19.0259H7.56516C4.46266 19.0259 2.8335 20.655 2.8335 23.7434V26.435C2.8335 29.5375 4.46266 31.1667 7.55099 31.1667H10.2427C13.331 31.1667 14.9602 29.5375 14.9602 26.4492V23.7575C14.9743 20.655 13.3452 19.0259 10.2568 19.0259Z"
-                      fill="#222F5D"
-                    />
-                  </svg>
-                </span>
-                {selectedItem === 1 && <span>دسته بندی</span>}
-              </Link>
-            </li>
-            <li onClick={() => setSelectedItem(2)}>
-              <Link to={"/cart"} className="flex gap-x-2 items-center p-2">
-                <span>
-                  <svg
-                    width="34"
-                    height="34"
-                    viewBox="0 0 34 34"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M28.2766 12.6934C27.3275 11.6451 25.8966 11.0359 23.9133 10.8234V9.74673C23.9133 7.8059 23.0916 5.9359 21.6466 4.63256C20.1875 3.3009 18.2891 2.67756 16.32 2.86173C12.9341 3.18756 10.0866 6.46006 10.0866 10.0017V10.8234C8.1033 11.0359 6.67247 11.6451 5.7233 12.6934C4.34913 14.2234 4.39163 16.2634 4.54747 17.6801L5.53913 25.5709C5.83663 28.3334 6.9558 31.1667 13.0475 31.1667H20.9525C27.0441 31.1667 28.1633 28.3334 28.4608 25.5851L29.4525 17.6659C29.6083 16.2634 29.6366 14.2234 28.2766 12.6934ZM16.5183 4.8309C17.935 4.7034 19.2808 5.14256 20.3291 6.09173C21.3633 7.02673 21.9441 8.3584 21.9441 9.74673V10.7384H12.0558V10.0017C12.0558 7.48006 14.1383 5.05756 16.5183 4.8309ZM11.9283 18.6292H11.9141C11.135 18.6292 10.4975 17.9917 10.4975 17.2126C10.4975 16.4334 11.135 15.7959 11.9141 15.7959C12.7075 15.7959 13.345 16.4334 13.345 17.2126C13.345 17.9917 12.7075 18.6292 11.9283 18.6292ZM21.845 18.6292H21.8308C21.0516 18.6292 20.4141 17.9917 20.4141 17.2126C20.4141 16.4334 21.0516 15.7959 21.8308 15.7959C22.6241 15.7959 23.2616 16.4334 23.2616 17.2126C23.2616 17.9917 22.6241 18.6292 21.845 18.6292Z"
-                      fill="#222F5D"
-                    />
-                  </svg>
-                </span>
-                {selectedItem === 2 && <span>سبد خرید</span>}
-              </Link>
-            </li>
-            <li onClick={() => setSelectedItem(3)}>
-              <Link to={"/"} className="flex gap-x-2 items-center p-2">
-                <span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 32 32"
-                    fill="none"
-                  >
-                    <path
-                      d="M26.72 9.09357L19.04 3.72024C16.9467 2.25358 13.7333 2.33358 11.72 3.89358L5.03999 9.10691C3.70665 10.1469 2.65332 12.2802 2.65332 13.9602V23.1602C2.65332 26.5602 5.41332 29.3336 8.81332 29.3336H23.1867C26.5867 29.3336 29.3467 26.5736 29.3467 23.1736V14.1336C29.3467 12.3336 28.1867 10.1202 26.72 9.09357ZM17 24.0002C17 24.5469 16.5467 25.0002 16 25.0002C15.4533 25.0002 15 24.5469 15 24.0002V20.0002C15 19.4536 15.4533 19.0002 16 19.0002C16.5467 19.0002 17 19.4536 17 20.0002V24.0002Z"
-                      fill="#222F5D"
-                    />
-                  </svg>
-                </span>
-                {selectedItem === 3 && <span>علاقه مندی ها</span>}
-              </Link>
-            </li>
-          </ul>
-        </div>
+    <div className="md:hidden fixed bottom-0 left-0 right-0 w-full">
+      <div className="bg-white">
+        <ul className="flex items-center justify-around py-2">
+          <li onClick={() => setSelectedItem(0)}>
+            <Link to={"/"} className="p-2 flex gap-x-2 items-center">
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-7 w-7"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                  />
+                </svg>
+              </span>
+              {selectedItem === 0 && <span>خانه</span>}
+            </Link>
+          </li>
+          <li onClick={() => setSelectedItem(1)}>
+            <Link to={"/products"} className="flex gap-x-2 items-center p-2">
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-7 w-7"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+                  />
+                </svg>
+              </span>
+              {selectedItem === 1 && <span>دسته بندی</span>}
+            </Link>
+          </li>
+          <li onClick={() => setSelectedItem(2)}>
+            <Link to={"/cart"} className="flex gap-x-2 items-center p-2">
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-7 w-7"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                  />
+                </svg>
+              </span>
+              {selectedItem === 2 && <span>سبد خرید</span>}
+            </Link>
+          </li>
+          <li onClick={() => setSelectedItem(3)}>
+            <Link to={"/signin"} className="flex gap-x-2 items-center p-2">
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-7 w-7"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
+                  />
+                </svg>
+              </span>
+              {selectedItem === 3 && <span>ورود</span>}
+            </Link>
+          </li>
+        </ul>
       </div>
-    </>
+    </div>
   );
-}
+};
 
 export default HomeBottomNav;
