@@ -2,8 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SeparateNumbers from "../common/SeparateNumbers";
 function SingleProduct({ product }) {
-
-  const queryUrl = product.title.split(' ').join('-');
+  const queryUrl = product.title.split(" ").join("-");
 
   return (
     <>
@@ -26,15 +25,23 @@ function SingleProduct({ product }) {
         </div>
         {/* product image */}
         <div className="bg-gray-100 rounded-md">
-          <img className="w-full h-[250px] object-contain" src={product.image} alt="watch" />
+          <img
+            className="w-full h-[250px] object-contain"
+            src={product.image}
+            alt="watch"
+          />
         </div>
         {/* color section */}
         <div className="flex items-center justify-between my-2">
           <p className="text-gray-400 text-sm">{product.category}</p>
           <div className="flex">
-            <div className="bg-orange-300 w-6 h-6 rounded-full shadow-md border-2 border-white flex items-center justify-center -ml-1"></div>
-            <div className="bg-blue-300 w-6 h-6 flex items-center justify-center rounded-full shadow-md border-2 border-white -ml-1"></div>
-            <div className="bg-red-600 w-6 h-6 flex items-center justify-center rounded-full shadow-md border-2 border-white"></div>
+            {product.colors.map((color, index) => (
+              <div
+                style={{ backgroundColor: color }}
+                key={index}
+                className={`text-white w-6 h-6 rounded-full shadow-md border-2 border-white flex items-center justify-center -ml-1`}
+              ></div>
+            ))}
           </div>
         </div>
         {/* description */}

@@ -15,7 +15,7 @@ function Footer() {
               هوشمند و ساعت هوشمند می‌باشد.
               <br />
               دیجی تایز افتخار این را داشته که به{" "}
-              <span className="text-red-500">۱۲۲,۲۳۲</span> نفر تا به اکنونخدمت
+              <span className="text-red-500">۱۲۲,۲۳۲</span> نفر تا به اکنون خدمت
               رسانی داشته باشد.
             </p>
             <div className="flex flex-col gap-y-3 mt-4">

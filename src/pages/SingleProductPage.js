@@ -9,10 +9,17 @@ function SingleProductPage() {
   const product = useLocation();
   return (
     <>
-      <AppBar />
-      <div className="px-4 flex items-center gap-x-2 md:hidden my-2">
-        <Breadcrumbs />
-      </div>
+      {product.state ? (
+        <AppBar title={product.state.product.title} />
+      ) : (
+        <AppBar title="محصول یافت نشد" />
+      )}
+
+      {product.state && (
+        <div className="px-4 flex items-center gap-x-2 md:hidden my-2">
+          <Breadcrumbs title={product.state.product.title} />
+        </div>
+      )}
 
       <div className="2xl:container 2xl:max-w-screen-2xl 2xl:mx-auto grid grid-cols-12 md:gap-8 md:pb-8">
         <CategorySidebar />
@@ -20,7 +27,7 @@ function SingleProductPage() {
           {product.state && (
             <div className="hidden md:flex px-4 items-center gap-x-2 bg-white">
               <div className="p-4 flex items-center gap-x-2 rounded-md">
-                <Breadcrumbs />
+                <Breadcrumbs title={product.state.product.title} />
               </div>
             </div>
           )}

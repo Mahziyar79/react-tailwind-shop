@@ -1,11 +1,23 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PriceRange from "./PriceRange";
+import {products} from '../data/Products'
 
-function ShopSidebar() {
+function ShopSidebar({ selectedBrandFilter, setSelectedBrandFilter }) {
+
   const [brandAccordion, setBrandAccordion] = useState(false);
   const [colorAccordion, setColorAccordion] = useState(false);
   const [priceAccordion, setPriceAccordion] = useState(false);
+
+  const checkBrands = (e, id) => {
+    if (e.target.checked) {
+      setSelectedBrandFilter([...selectedBrandFilter, id]);
+    } else {
+      setSelectedBrandFilter(
+        selectedBrandFilter.filter((brand) => brand !== id)
+      );
+    }
+  };
 
   return (
     <>
@@ -34,7 +46,7 @@ function ShopSidebar() {
                   </svg>
                 </div>
                 <p className="mr-1 hover:bg-gray-50 w-full p-2 rounded-lg pl-0">
-                <Link to={"/"}>تلفن همراه</Link>
+                  <Link to={"/"}>تلفن همراه</Link>
                 </p>
               </div>
               <div className="flex items-center text-slate-700 mt-4 text-sm">
@@ -76,7 +88,7 @@ function ShopSidebar() {
                   </svg>
                 </div>
                 <p className="mr-1.5 hover:bg-gray-50 w-full p-2 rounded-lg pl-0">
-                <Link to={"/"}>ساعت هوشمندی</Link>
+                  <Link to={"/"}>ساعت هوشمندی</Link>
                 </p>
               </div>
             </div>
@@ -148,40 +160,23 @@ function ShopSidebar() {
                   </div>
                 </div>
                 {brandAccordion && (
+                  
                   <div className="py-2 flex flex-col gap-y-2">
-                    <div>
-                      <label htmlFor="apple" className="flex items-center">
-                        <input
-                          type="checkbox"
-                          name="brand"
-                          id="apple"
-                          className="form-checkbox rounded text-orange-600 focus:ring-orange-600"
-                        />
-                        <span className="mr-2">اپل</span>
-                      </label>
-                    </div>
-                    <div>
-                      <label htmlFor="samsung" className="flex items-center">
-                        <input
-                          type="checkbox"
-                          name="brand"
-                          id="samsung"
-                          className="form-checkbox rounded text-orange-600 focus:ring-orange-600"
-                        />
-                        <span className="mr-2">سامسونگ</span>
-                      </label>
-                    </div>
-                    <div>
-                      <label htmlFor="xiaomi" className="flex items-center">
-                        <input
-                          type="checkbox"
-                          name="brand"
-                          id="xiaomi"
-                          className="form-checkbox rounded text-orange-600 focus:ring-orange-600"
-                        />
-                        <span className="mr-2">شیائومی</span>
-                      </label>
-                    </div>
+                    {products.map((product) => (
+                      <div key={product.id}>
+                        <label htmlFor={product.category} className="flex items-center">
+                          <input
+                            type="checkbox"
+                            name="brand"
+                            id={product.category}
+                            className="form-checkbox rounded text-orange-600 focus:ring-orange-600"
+                            onChange={(e) => checkBrands(e, e.target.id)}
+                          />
+                          <span className="mr-2">{product.category}</span>
+                        </label>
+                      </div>
+                    ))}
+                   
                   </div>
                 )}
               </div>
@@ -376,7 +371,7 @@ function ShopSidebar() {
                 </div>
                 {priceAccordion && (
                   <div className="py-2 flex flex-col gap-y-2">
-                  <PriceRange />
+                    <PriceRange />
                   </div>
                 )}
               </div>

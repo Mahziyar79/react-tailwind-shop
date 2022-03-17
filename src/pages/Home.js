@@ -8,6 +8,8 @@ import ProductList from "../components/ProductList";
 
 function Home() {
   const [selectedHeaderFilter, setSelectedHeaderFilter] = useState("popular");
+  const [selectedBrandFilter, setSelectedBrandFilter] = useState([]);
+
 
   return (
     <div>
@@ -15,13 +17,17 @@ function Home() {
       <MobileHeadFilter />
 
       <div className="2xl:container 2xl:max-w-screen-2xl 2xl:mx-auto grid grid-cols-12 grid-rows-[55px_minmax(500px,_1fr)] md:gap-8 md:pb-8">
-        <ShopSidebar />
+        <ShopSidebar 
+        selectedBrandFilter={selectedBrandFilter}
+        setSelectedBrandFilter={setSelectedBrandFilter}
+        />
         <HeadFilter
           selectedHeaderFilter={selectedHeaderFilter}
           setSelectedHeaderFilter={setSelectedHeaderFilter}
         />
-        <ProductList selectedHeaderFilter={selectedHeaderFilter} />
+        <ProductList selectedHeaderFilter={selectedHeaderFilter} selectedBrandFilter={selectedBrandFilter}/>
       </div>
+      
 
       <HomeBottomNav />
     </div>

@@ -1,10 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function Breadcrumbs() {
+const Breadcrumbs = ({ title }) => {
   return (
     // breadcrumbs
     <>
-      <span className="text-sm text-orange-500">تلفن همراه</span>
+      <Link to="/">
+        <span className="text-sm text-orange-500">خانه</span>
+      </Link>
       <span>
         <svg
           width="7"
@@ -19,7 +22,9 @@ function Breadcrumbs() {
           />
         </svg>
       </span>
-      <span className="text-sm text-orange-500">برند اپل</span>
+      <Link to="/products">
+        <span className="text-sm text-orange-500">دسته بندی</span>
+      </Link>
       <span>
         <svg
           width="7"
@@ -34,9 +39,9 @@ function Breadcrumbs() {
           />
         </svg>
       </span>
-      <span className="text-sm text-gray-400"> آیفون 13</span>
+      <span className="text-sm text-gray-400">{title}</span>
     </>
   );
-}
+};
 
-export default Breadcrumbs;
+export default React.memo(Breadcrumbs);

@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/Logo.png";
-import { useSelector } from 'react-redux'
-
+import { useSelector } from "react-redux";
 
 function Header() {
-  const productData = useSelector((state) => state.productReducer.cart)
+  const productData = useSelector((state) => state.productReducer.cart);
 
   return (
     <>
@@ -37,6 +36,26 @@ function Header() {
             </nav>
           </div>
           <div className="max-w-lg flex items-center">
+            <Link to={"/signin"}>
+              <div className="text-gray-600 relative cursor-pointer flex gap-x-1 items-center ml-4 lg:ml-6">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
+                  />
+                </svg>
+                <span>ورود</span>
+
+              </div>
+            </Link>
             <Link to={"/cart"}>
               <div className="text-gray-600 relative cursor-pointer">
                 <svg
@@ -58,7 +77,7 @@ function Header() {
                 </span>
               </div>
             </Link>
-            <div className="relative lg:w-96 lg:flex-1 mr-4">
+            <div className="relative lg:w-96 lg:flex-1 mr-4 lg:mr-6">
               <span className="absolute right-1 top-2 text-gray-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

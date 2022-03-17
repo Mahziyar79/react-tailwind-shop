@@ -3,15 +3,21 @@ import SingleProduct from "./SingleProduct";
 import { products } from "../data/Products";
 import _ from "lodash";
 
-function ProductList({ selectedHeaderFilter }) {
+function ProductList({ selectedHeaderFilter, selectedBrandFilter }) {
   const [filterProducts, setFilterProducts] = useState(products);
-
   useEffect(() => {
-    filterHandler();
+    filterSortHandler();
   }, [selectedHeaderFilter]);
 
-  const filterHandler = () => {
-    if (selectedHeaderFilter === "popular") {
+  useEffect(() => {
+    brandFilter();
+  }, [selectedBrandFilter]);
+
+  const filterSortHandler = () => {
+    if (
+      selectedHeaderFilter === "popular" ||
+      selectedHeaderFilter === "seller"
+    ) {
       setFilterProducts(products);
       return;
     }
@@ -24,6 +30,18 @@ function ProductList({ selectedHeaderFilter }) {
       const lowPrice = _.orderBy(products, ["price"], ["asc"]);
       setFilterProducts(lowPrice);
       return;
+    }
+  };
+
+  const brandFilter = () => {
+    if (!selectedBrandFilter.length) {
+      setFilterProducts(products);
+    } else {
+      const filterBrandItems = selectedBrandFilter.map((item) =>
+        products.filter((product) => product.category === item)
+      );
+      
+      setFilterProducts(filterBrandItems.map(item=>item[0]));
     }
   };
 

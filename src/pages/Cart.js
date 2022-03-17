@@ -8,7 +8,6 @@ import HomeBottomNav from "../components/HomeBottomNav";
 
 function Cart() {
   const products = useSelector((state) => state.productReducer.cart);
-
   const reducePrice = () => {
     const reducePriceNumb = products.reduce(
       (previousValue, currentValue) =>
@@ -23,7 +22,7 @@ function Cart() {
     <>
       <AppBar title="سبد خرید" />
       {/* cart */}
-      <div className="2xl:container 2xl:max-w-screen-2xl 2xl:mx-auto p-3 md:mb-10">
+      <div className="2xl:container 2xl:max-w-screen-2xl 2xl:mx-auto p-3 md:mb-10 2xl:mb-48">
         <div className="flex flex-col md:flex-row justify-between md:px-5 lg:px-10">
           <div
             className={`flex flex-col gap-y-4  md:mt-4 ${

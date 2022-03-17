@@ -1,13 +1,21 @@
 import React from "react";
 import productImage from "../assets/images/apple/iphone-13-pro-max.png";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addProduct } from "../redux/addProducts/productSlice";
 import SeparateNumbers from "../common/SeparateNumbers";
+import { toast } from "react-toastify";
 
 function SingleProductPageComp({ product }) {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.productReducer.cart);
-  console.log(products);
+  const [selectedColor, setSelectedColor] = React.useState("");
+  const ProductWithColor = { ...product, SelectedColor: selectedColor };
+  const dispatchProduct = () => {
+    if (selectedColor) {
+      dispatch(addProduct(ProductWithColor));
+    } else {
+      toast.error("لطفا ابتدا رنگ مورد نظر خود را وارد کنید");
+    }
+  };
   return (
     <div className="md:bg-white rounded-md md:p-4 md:mt-5">
       {/* single product */}
@@ -42,52 +50,30 @@ function SingleProductPageComp({ product }) {
             {/* color section */}
             <div className="flex items-center justify-around md:justify-start my-5">
               <p className="text-gray-500">انتخاب رنگ :</p>
-              <div className="flex mr-4" x-data="{checkShow : ''}">
-                <div className="bg-orange-300 w-8 h-8 rounded-full shadow-md border-2 border-white flex items-center justify-center cursor-pointer -ml-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    x-show="checkShow==='orange'"
+              <div className="flex mr-4">
+                {product.colors.map((color, index) => (
+                  <div
+                    key={index}
+                    onClick={() => setSelectedColor({ color })}
+                    style={{ backgroundColor: color }}
+                    className={`text-white w-8 h-8 rounded-full shadow-md border-2 border-white flex items-center justify-center cursor-pointer -ml-1`}
                   >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </div>
-                <div className="bg-blue-300 w-8 h-8 flex items-center justify-center rounded-full shadow-md border-2 border-white -ml-1 cursor-pointer">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    x-show="checkShow==='blue'"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </div>
-                <div className="bg-red-600 w-8 h-8 flex items-center justify-center rounded-full shadow-md border-2 border-white cursor-pointer">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    x-show="checkShow==='red'"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </div>
+                    {selectedColor.color === color && (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
             {/* product shipping info */}
@@ -401,7 +387,7 @@ function SingleProductPageComp({ product }) {
             </div>
             <div>
               <button
-                onClick={() => dispatch(addProduct(product))}
+                onClick={() => dispatchProduct()}
                 className="bg-red-400 lg:text-md text-sm rounded-md shadow-md text-white py-3 px-2 w-full"
               >
                 افزودن به سبد خرید
@@ -413,7 +399,7 @@ function SingleProductPageComp({ product }) {
         <div className="md:hidden fixed bottom-0 left-0 right-0 w-full">
           <div className="bg-white p-3 flex items-center justify-between shadow-[0_-4px_8px_0_rgba(0,0,0,0.1)]">
             <button
-              onClick={() => dispatch(addProduct(product))}
+              onClick={() => dispatchProduct()}
               className="bg-red-400 rounded-md shadow-md text-white py-2 px-4"
             >
               افزودن به سبد خرید

@@ -9,8 +9,6 @@ import SeparateNumbers from "../common/SeparateNumbers";
 
 function CartItem({ product }) {
   const dispatch = useDispatch();
-  
-
   return (
     <div className="bg-white p-3 flex gap-x-3 rounded-md">
       <div className="w-20 flex items-center">
@@ -18,7 +16,13 @@ function CartItem({ product }) {
       </div>
       <div className="flex flex-col justify-between w-full gap-y-5">
         <div className="flex items-center justify-between">
-          <p>{product.title}</p>
+          <div className="flex gap-x-2 items-center">
+            <p>{product.title}</p>
+            <div
+              style={{ backgroundColor: product.SelectedColor.color }}
+              className={`w-6 h-6 flex items-center justify-center rounded-full shadow-md border-2 border-white`}
+            ></div>
+          </div>
           <button
             onClick={() => {
               dispatch(deleteProduct(product.id));
@@ -42,7 +46,9 @@ function CartItem({ product }) {
           </button>
         </div>
         <div className="flex items-center justify-between">
-          <p className="text-orange-700">{SeparateNumbers(product.price)} تومان</p>
+          <p className="text-orange-700">
+            {SeparateNumbers(product.price)} تومان
+          </p>
           <div className="flex items-center gap-x-2">
             <span
               onClick={() => {
