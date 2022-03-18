@@ -1,13 +1,23 @@
 import React, { useState } from "react";
+import ShopSidebar from "./ShopSidebar";
 
-function MobileHeadFilter({  setSelectedHeaderFilter }) {
+function MobileHeadFilter({
+  setSelectedHeaderFilter,
+  selectedBrandFilter,
+  setSelectedBrandFilter,
+  setSelectedPriceFilter,
+}) {
   const [filterPopular, setFilterPopular] = useState(false);
+  const [filterPrice, setFilterPrice] = useState(false);
   const [filterPopularName, setFilterPopularName] = useState("محبوب ترین");
 
-  const filterPopularHandler = (name,popular) => {
+  const filterPopularHandler = (name, popular) => {
     setFilterPopularName(name);
-    setSelectedHeaderFilter(popular)
-    setFilterPopular(false)
+    setSelectedHeaderFilter(popular);
+    setFilterPopular(false);
+  };
+  const filterPriceHandler = () => {
+    setFilterPrice(!filterPrice);
   };
 
   return (
@@ -16,7 +26,7 @@ function MobileHeadFilter({  setSelectedHeaderFilter }) {
       <div className="md:hidden px-4 flex items-center justify-between gap-x-2 mb-4">
         <div
           onClick={() => setFilterPopular(!filterPopular)}
-          className="bg-white flex items-center justify-evenly p-2 rounded-md w-full cursor-pointer shadow-md"
+          className="bg-white flex items-center justify-center gap-x-2 p-2 rounded-md w-full cursor-pointer shadow-md"
         >
           <span>
             <svg
@@ -36,7 +46,10 @@ function MobileHeadFilter({  setSelectedHeaderFilter }) {
           </span>
           <span className="text-sm text-slate-800">{filterPopularName}</span>
         </div>
-        <div className="bg-white flex items-center justify-evenly p-2 rounded-md w-full cursor-pointer shadow-md">
+        <div
+          onClick={() => filterPriceHandler()}
+          className="bg-white flex items-center justify-center gap-x-2 p-2 rounded-md w-full cursor-pointer shadow-md"
+        >
           <span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +66,7 @@ function MobileHeadFilter({  setSelectedHeaderFilter }) {
               />
             </svg>
           </span>
-          <span className="text-sm text-slate-800">فیلتر : برند اپل</span>
+          <span className="text-sm text-slate-800">فیلتر </span>
         </div>
       </div>
 
@@ -61,7 +74,7 @@ function MobileHeadFilter({  setSelectedHeaderFilter }) {
       {filterPopular && (
         <div className="md:hidden px-4 flex items-center flex-col justify-between gap-y-2 mb-4">
           <div
-            onClick={() => filterPopularHandler("محبوب ترین" , "popular")}
+            onClick={() => filterPopularHandler("محبوب ترین", "popular")}
             className="bg-white flex items-center justify-center gap-x-3 p-2 rounded-md w-full cursor-pointer shadow-md"
           >
             <span>
@@ -83,7 +96,7 @@ function MobileHeadFilter({  setSelectedHeaderFilter }) {
             <span className="text-sm text-slate-800">محبوب ترین</span>
           </div>
           <div
-            onClick={() => filterPopularHandler("گران ترین" , "highPrice")}
+            onClick={() => filterPopularHandler("گران ترین", "highPrice")}
             className="bg-white flex items-center justify-center gap-x-3 p-2 rounded-md w-full cursor-pointer shadow-md"
           >
             <span>
@@ -105,8 +118,8 @@ function MobileHeadFilter({  setSelectedHeaderFilter }) {
             <span className="text-sm text-slate-800">گران ترین ها</span>
           </div>
           <div
-           onClick={() => filterPopularHandler("ارزان ترین" , "LowPrice")}
-           className="bg-white flex items-center justify-center gap-x-3 p-2 rounded-md w-full cursor-pointer shadow-md"
+            onClick={() => filterPopularHandler("ارزان ترین", "LowPrice")}
+            className="bg-white flex items-center justify-center gap-x-3 p-2 rounded-md w-full cursor-pointer shadow-md"
           >
             <span>
               <svg
@@ -127,7 +140,7 @@ function MobileHeadFilter({  setSelectedHeaderFilter }) {
             <span className="text-sm text-slate-800">ارزان ترین ها</span>
           </div>
           <div
-            onClick={() => filterPopularHandler("پرفروش ترین" , "seller")}
+            onClick={() => filterPopularHandler("پرفروش ترین", "seller")}
             className="bg-white flex items-center justify-center gap-x-3 p-2 rounded-md w-full cursor-pointer shadow-md"
           >
             <span>
@@ -149,6 +162,17 @@ function MobileHeadFilter({  setSelectedHeaderFilter }) {
             <span className="text-sm text-slate-800">پرفروش ترین ها</span>
           </div>
         </div>
+      )}
+
+      {/* price & brand filter */}
+      {filterPrice && (
+        <ShopSidebar
+          selectedBrandFilter={selectedBrandFilter}
+          setSelectedBrandFilter={setSelectedBrandFilter}
+          setSelectedPriceFilter={setSelectedPriceFilter}
+          isShow="block"
+          isCategoryShow="hidden"
+        />
       )}
     </>
   );

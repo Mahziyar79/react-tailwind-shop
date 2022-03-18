@@ -9,6 +9,8 @@ function ShopSidebar({
   selectedBrandFilter,
   setSelectedBrandFilter,
   setSelectedPriceFilter,
+  isShow,
+  isCategoryShow
 }) {
   const [brandAccordion, setBrandAccordion] = useState(false);
   const [priceAccordion, setPriceAccordion] = useState(false);
@@ -32,10 +34,10 @@ function ShopSidebar({
   return (
     <>
       {/* sidebar */}
-      <div className="hidden md:col-span-3 xl:col-span-2 md:block col-span-2 row-span-2 pb-4">
+      <div className={`${isShow} md:col-span-3 xl:col-span-2 md:block col-span-2 row-span-2 pb-4`}>
         <div className="bg-white p-4 rounded-md mr-4 mt-4 sticky top-20">
           {/* category */}
-          <div>
+          <div className={`${isCategoryShow}`}>
             <p className="text-orange-600 text-lg">دسته بندی</p>
             <div>
               <div className="flex items-center text-slate-700 mt-4 text-sm">
@@ -105,7 +107,7 @@ function ShopSidebar({
           </div>
           {/* filters */}
           <div>
-            <p className="text-orange-600 text-lg mt-7">فیلتر ها</p>
+            <p className={`text-orange-600 text-lg ${isCategoryShow==='hidden ? mt-0 : mt-7'}`}>فیلتر ها</p>
             {/* Acc No1 */}
             <div className="bg-white flex flex-col mt-2 gap-y-4 items-center rounded-lg">
               <div className="w-full">
