@@ -9,25 +9,28 @@ import ProductList from "../components/ProductList";
 function Home() {
   const [selectedHeaderFilter, setSelectedHeaderFilter] = useState("popular");
   const [selectedBrandFilter, setSelectedBrandFilter] = useState([]);
-
-
+  const [selectedPriceFilter, setSelectedPriceFilter] = useState([]);
   return (
     <div>
       <AppBar title="فروشگاه" />
       <MobileHeadFilter />
 
       <div className="2xl:container 2xl:max-w-screen-2xl 2xl:mx-auto grid grid-cols-12 grid-rows-[55px_minmax(500px,_1fr)] md:gap-8 md:pb-8">
-        <ShopSidebar 
-        selectedBrandFilter={selectedBrandFilter}
-        setSelectedBrandFilter={setSelectedBrandFilter}
+        <ShopSidebar
+          selectedBrandFilter={selectedBrandFilter}
+          setSelectedBrandFilter={setSelectedBrandFilter}
+          setSelectedPriceFilter={setSelectedPriceFilter}
         />
         <HeadFilter
           selectedHeaderFilter={selectedHeaderFilter}
           setSelectedHeaderFilter={setSelectedHeaderFilter}
         />
-        <ProductList selectedHeaderFilter={selectedHeaderFilter} selectedBrandFilter={selectedBrandFilter}/>
+        <ProductList
+          selectedHeaderFilter={selectedHeaderFilter}
+          selectedBrandFilter={selectedBrandFilter}
+          selectedPriceFilter={selectedPriceFilter}
+        />
       </div>
-      
 
       <HomeBottomNav />
     </div>

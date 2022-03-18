@@ -1,13 +1,22 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import PriceRange from "./PriceRange";
-import {products} from '../data/Products'
+import { products } from "../data/Products";
+import Slider from "@material-ui/core/Slider";
+import GetLowHighPrice from "./GetLowHighPrice";
+import SeparateNumbers from "../common/SeparateNumbers";
 
-function ShopSidebar({ selectedBrandFilter, setSelectedBrandFilter }) {
-
+function ShopSidebar({
+  selectedBrandFilter,
+  setSelectedBrandFilter,
+  setSelectedPriceFilter,
+}) {
   const [brandAccordion, setBrandAccordion] = useState(false);
-  const [colorAccordion, setColorAccordion] = useState(false);
   const [priceAccordion, setPriceAccordion] = useState(false);
+  const [value, setValue] = useState([0, 1000000]);
+  const rangeSelector = (event, newValue) => {
+    setValue(newValue);
+  };
+
 
   const checkBrands = (e, id) => {
     if (e.target.checked) {
@@ -18,6 +27,7 @@ function ShopSidebar({ selectedBrandFilter, setSelectedBrandFilter }) {
       );
     }
   };
+
 
   return (
     <>
@@ -160,11 +170,13 @@ function ShopSidebar({ selectedBrandFilter, setSelectedBrandFilter }) {
                   </div>
                 </div>
                 {brandAccordion && (
-                  
                   <div className="py-2 flex flex-col gap-y-2">
                     {products.map((product) => (
                       <div key={product.id}>
-                        <label htmlFor={product.category} className="flex items-center">
+                        <label
+                          htmlFor={product.category}
+                          className="flex items-center"
+                        >
                           <input
                             type="checkbox"
                             name="brand"
@@ -176,129 +188,12 @@ function ShopSidebar({ selectedBrandFilter, setSelectedBrandFilter }) {
                         </label>
                       </div>
                     ))}
-                   
                   </div>
                 )}
               </div>
             </div>
+
             {/* Acc No2 */}
-            <div className="bg-white flex flex-col mt-2 gap-y-4 items-center rounded-lg">
-              <div className="w-full">
-                <div
-                  onClick={() => setColorAccordion(!colorAccordion)}
-                  className="hover:bg-gray-50 py-2 text-slate-800 w-full rounded-lg flex items-center justify-between cursor-pointer"
-                >
-                  <div className="flex items-center">
-                    <span>
-                      <svg
-                        className="w-7 h-7"
-                        viewBox="0 0 22 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M6.91679 11.0691V19.8219C6.91679 20.5221 6.6315 21.1639 6.17766 21.6307L6.15174 21.6567C6.09338 21.715 6.02855 21.7734 5.9702 21.8188C5.77569 21.9873 5.55524 22.117 5.32832 22.2078C5.257 22.2402 5.18569 22.2661 5.11437 22.2921C4.86151 22.3764 4.58921 22.4153 4.32338 22.4153C4.14833 22.4153 3.97328 22.3958 3.80471 22.3634C3.72042 22.3439 3.63613 22.3245 3.55184 22.2986C3.44811 22.2661 3.35086 22.2337 3.25361 22.1883C3.25361 22.1818 3.2536 22.1818 3.24712 22.1883C3.06558 22.0976 2.89053 21.9938 2.72845 21.8706L2.72196 21.8642C2.63767 21.7993 2.55988 21.7345 2.48856 21.6567C2.41724 21.5789 2.34591 21.5011 2.27459 21.4168C2.15141 21.2547 2.04768 21.0797 1.95691 20.8981C1.96339 20.8916 1.96339 20.8916 1.95691 20.8916C1.95691 20.8916 1.9569 20.8851 1.95042 20.8787C1.91152 20.7879 1.8791 20.6906 1.84668 20.5934C1.82074 20.5091 1.80129 20.4248 1.78184 20.3405C1.74942 20.172 1.72998 19.9969 1.72998 19.8219V11.0691C1.72998 10.0966 2.37833 9.44824 3.35086 9.44824H5.29591C6.26843 9.44824 6.91679 10.0966 6.91679 11.0691Z"
-                          stroke="#222F5D"
-                          strokeWidth="0.972526"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M14.6973 18.8494V20.7944C14.6973 21.767 14.049 22.4153 13.0765 22.4153H4.32373C4.58955 22.4153 4.86186 22.3764 5.11472 22.2921C5.18604 22.2662 5.25735 22.2403 5.32867 22.2078C5.55559 22.1171 5.77604 21.9874 5.97055 21.8188C6.0289 21.7735 6.09373 21.7151 6.15208 21.6568L6.178 21.6308L10.5868 17.2285H13.0765C14.049 17.2285 14.6973 17.8769 14.6973 18.8494Z"
-                          stroke="#222F5D"
-                          strokeWidth="0.972526"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M3.55184 22.2989C3.16283 22.1822 2.79329 21.9683 2.48856 21.657C2.17735 21.3523 1.96338 20.9828 1.84668 20.5938C2.09954 21.4042 2.74141 22.0461 3.55184 22.2989Z"
-                          stroke="#222F5D"
-                          strokeWidth="0.972526"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M12.344 15.4712L10.587 17.2283L6.17822 21.6306C6.63207 21.1637 6.91735 20.5219 6.91735 19.8217V13.5586L8.67438 11.8016C9.36163 11.1143 10.2823 11.1143 10.9695 11.8016L12.344 13.1761C13.0313 13.8633 13.0313 14.784 12.344 15.4712Z"
-                          stroke="#222F5D"
-                          strokeWidth="0.972526"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M4.32364 20.4705C4.68172 20.4705 4.97199 20.1803 4.97199 19.8222C4.97199 19.4641 4.68172 19.1738 4.32364 19.1738C3.96557 19.1738 3.67529 19.4641 3.67529 19.8222C3.67529 20.1803 3.96557 20.4705 4.32364 20.4705Z"
-                          stroke="#222F5D"
-                          strokeWidth="0.972526"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <circle
-                          cx="10.9924"
-                          cy="10.9299"
-                          r="10.5589"
-                          fill="#AFAFAF"
-                          fillOpacity="0.29"
-                        />
-                      </svg>
-                    </span>
-                    <span className="mr-2 md:text-sm">رنگ محصول</span>
-                  </div>
-                  <div>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className={`h-5 w-5 transition-all duration-400 ${
-                        colorAccordion && "rotate-180"
-                      }`}
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                {colorAccordion && (
-                  <div className="py-2 flex flex-col gap-y-2">
-                    <div>
-                      <label htmlFor="green" className="flex items-center">
-                        <input
-                          type="checkbox"
-                          name="color"
-                          id="green"
-                          className="form-checkbox rounded text-orange-600 focus:ring-orange-600"
-                        />
-                        <span className="mr-2">سبز</span>
-                      </label>
-                    </div>
-                    <div>
-                      <label htmlFor="red" className="flex items-center">
-                        <input
-                          type="checkbox"
-                          name="color"
-                          id="red"
-                          className="form-checkbox rounded text-orange-600 focus:ring-orange-600"
-                        />
-                        <span className="mr-2">قرمز</span>
-                      </label>
-                    </div>
-                    <div>
-                      <label htmlFor="blue" className="flex items-center">
-                        <input
-                          type="checkbox"
-                          name="color"
-                          id="blue"
-                          className="form-checkbox rounded text-orange-600 focus:ring-orange-600"
-                        />
-                        <span className="mr-2">آبی</span>
-                      </label>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-            {/* Acc No3 */}
             <div className="bg-white flex flex-col mt-2 gap-y-4 items-center rounded-lg">
               <div className="w-full">
                 <div
@@ -371,7 +266,31 @@ function ShopSidebar({ selectedBrandFilter, setSelectedBrandFilter }) {
                 </div>
                 {priceAccordion && (
                   <div className="py-2 flex flex-col gap-y-2">
-                    <PriceRange />
+                    <div
+                      style={{
+                        display: "block",
+                      }}
+                    >
+                      <p className="text-xs mb-2">
+                        {" "}
+                        بازه قیمتی خود را مشخص کنید:
+                      </p>
+                        <Slider
+                          value={value}
+                          onChange={rangeSelector}
+                          valueLabelDisplay="off"
+                          step={50000}
+                          max={GetLowHighPrice().max}
+                        />
+                        <p className="text-sm">شروع قیمت : {SeparateNumbers(value[0])} تومان</p>
+                        <p className="text-sm my-2">پایان قیمت : {SeparateNumbers(value[1])} تومان</p>
+                      <button
+                        onClick={() => setSelectedPriceFilter(value)}
+                        className="bg-red-400 w-full text-sm rounded-md border-2 border-red-400 text-white p-1 hover:bg-white hover:text-red-400 transition-all duration-200"
+                      >
+                        تایید
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>

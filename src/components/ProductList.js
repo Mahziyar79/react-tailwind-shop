@@ -3,7 +3,7 @@ import SingleProduct from "./SingleProduct";
 import { products } from "../data/Products";
 import _ from "lodash";
 
-function ProductList({ selectedHeaderFilter, selectedBrandFilter }) {
+function ProductList({ selectedHeaderFilter, selectedBrandFilter,selectedPriceFilter }) {
   const [filterProducts, setFilterProducts] = useState(products);
   useEffect(() => {
     filterSortHandler();
