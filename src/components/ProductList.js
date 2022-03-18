@@ -3,7 +3,11 @@ import SingleProduct from "./SingleProduct";
 import { products } from "../data/Products";
 import _ from "lodash";
 
-function ProductList({ selectedHeaderFilter, selectedBrandFilter,selectedPriceFilter }) {
+function ProductList({
+  selectedHeaderFilter,
+  selectedBrandFilter,
+  selectedPriceFilter,
+}) {
   const [filterProducts, setFilterProducts] = useState(products);
   useEffect(() => {
     filterSortHandler();
@@ -12,6 +16,10 @@ function ProductList({ selectedHeaderFilter, selectedBrandFilter,selectedPriceFi
   useEffect(() => {
     brandFilter();
   }, [selectedBrandFilter]);
+
+  useEffect(() => {
+    priceFilter();
+  }, [selectedPriceFilter]);
 
   const filterSortHandler = () => {
     if (
@@ -40,8 +48,21 @@ function ProductList({ selectedHeaderFilter, selectedBrandFilter,selectedPriceFi
       const filterBrandItems = selectedBrandFilter.map((item) =>
         products.filter((product) => product.category === item)
       );
-      
-      setFilterProducts(filterBrandItems.map(item=>item[0]));
+
+      setFilterProducts(filterBrandItems.map((item) => item[0]));
+    }
+  };
+
+  const priceFilter = () => {
+    if (!selectedPriceFilter.length) {
+      setFilterProducts(products);
+    } else {
+      const filteredItems = products.filter(
+        (product) =>
+          product.price >= selectedPriceFilter[0] &&
+          product.price <= selectedPriceFilter[1]
+      );
+      setFilterProducts(filteredItems);
     }
   };
 
