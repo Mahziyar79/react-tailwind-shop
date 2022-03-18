@@ -1,10 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/images/Logo.png";
 import { useSelector } from "react-redux";
 
 function Header() {
   const productData = useSelector((state) => state.productReducer.cart);
+  const [searchValue,setSearchValue] = useState("");
+  const navigate = useNavigate();
+  const sendSearchValue = () => {
+    navigate('/search', { state: searchValue });
+  }
 
   return (
     <>
@@ -78,7 +83,7 @@ function Header() {
               </div>
             </Link>
             <div className="relative lg:w-96 lg:flex-1 mr-4 lg:mr-6">
-              <span className="absolute right-1 top-2 text-gray-400">
+              <span className="absolute cursor-pointer right-1 top-2 text-gray-400" onClick={()=>sendSearchValue()}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
@@ -98,6 +103,8 @@ function Header() {
                 placeholder="جستجو نام محصول ، نام برند و..."
                 type="text"
                 className="focus:outline-none shadow-smtext-sm pr-12 bg-stone-100 p-2 rounded-md w-full"
+                value={searchValue}
+                onChange={(e)=>setSearchValue(e.target.value)}
               />
             </div>
           </div>
