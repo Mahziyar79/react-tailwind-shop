@@ -62,7 +62,7 @@ const Search = () => {
               </div>
             </div>
           ) : (
-            <h2 className="p-4 text-2xl">محصول مورد نطر پیدا نشد</h2>
+            <h2 className="p-4 text-2xl md:mb-96">محصول مورد نظر یافت نشد</h2>
           )}
         </div>
       </div>
