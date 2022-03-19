@@ -17,7 +17,8 @@ import Search from "./pages/Search";
 function App() {
 
   return (
-    <Provider store={store}>
+
+      <Provider store={store}>
       <BrowserRouter>
         <ToastContainer />
         <Layout>

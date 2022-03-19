@@ -16,27 +16,27 @@ function Header({ darkToggle, setDarkToggle }) {
   return (
     <>
       {/* header */}
-      <div className="hidden md:flex items-center bg-white shadow-md sticky top-0 z-20">
+      <div className="hidden md:flex items-center bg-white dark:bg-slate-700 shadow-md sticky top-0 z-20">
         <div className="2xl:container 2xl:max-w-screen-2xl 2xl:mx-auto h-25 w-full p-3 flex items-center justify-between">
           <div className="flex gap-x-3 items-center">
             <Link to={"/"}>
               <img src={logo} alt="Logo"></img>
             </Link>
             <nav>
-              <ul className="flex items-center md:gap-x-3 lg:gap-x-6">
+              <ul className="flex items-center md:gap-x-3 lg:gap-x-6 dark:text-white">
                 <li>
                   <img src="/assets/images/Logo.png" alt="" />
                 </li>
-                <li className="hover:bg-slate-100 py-2 lg:px-3 md:px-1 rounded-md">
+                <li className="hover:bg-slate-100 dark:hover:bg-slate-800 py-2 lg:px-3 md:px-1 rounded-md">
                   <Link to={"/"}>خانه</Link>
                 </li>
-                <li className="hover:bg-slate-100 py-2 lg:px-3 md:px-1 rounded-md">
+                <li className="hover:bg-slate-100 py-2 dark:hover:bg-slate-800 lg:px-3 md:px-1 rounded-md">
                   <Link to={"/products"}>دسته بندی</Link>
                 </li>
-                <li className="hover:bg-slate-100 py-2 lg:px-3 md:px-1 rounded-md">
+                <li className="hover:bg-slate-100 py-2 dark:hover:bg-slate-800 lg:px-3 md:px-1 rounded-md">
                   <Link to={"/about"}>ارتباط با ما</Link>
                 </li>
-                <li className="hover:bg-slate-100 py-2 lg:px-3 md:px-1 rounded-md">
+                <li className="hover:bg-slate-100 py-2 dark:hover:bg-slate-800 lg:px-3 md:px-1 rounded-md">
                   <Link to={"/contact"}>تماس با ما</Link>
                 </li>
               </ul>
@@ -59,7 +59,7 @@ function Header({ darkToggle, setDarkToggle }) {
               )}
             </span>
             <Link to={"/signin"}>
-              <div className="text-gray-600 relative cursor-pointer flex gap-x-1 items-center ml-4 lg:ml-6">
+              <div className="text-gray-600 dark:text-white relative cursor-pointer flex gap-x-1 items-center ml-4 lg:ml-6">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
@@ -78,7 +78,7 @@ function Header({ darkToggle, setDarkToggle }) {
               </div>
             </Link>
             <Link to={"/cart"}>
-              <div className="text-gray-600 relative cursor-pointer">
+              <div className="text-gray-600 dark:text-white relative cursor-pointer">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"

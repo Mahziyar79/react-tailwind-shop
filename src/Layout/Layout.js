@@ -6,11 +6,12 @@ function Layout({ children }) {
   const [darkToggle, setDarkToggle] = useState(false);
 
   return (
-    <div className={` ${darkToggle && "dark"}`}>
-      <div className="bg-gray-100 dark:bg-gray-800">
-        <Header darkToggle={darkToggle} setDarkToggle={setDarkToggle} />
-        {children}
-        <Footer />
+    <div className={`${darkToggle ? "dark" : ""}`}>
+      <div className="bg-gray-100 dark:bg-slate-800 smmax:min-h-screen">
+
+      <Header darkToggle={darkToggle} setDarkToggle={setDarkToggle} />
+      {children}
+      <Footer />
       </div>
     </div>
   );

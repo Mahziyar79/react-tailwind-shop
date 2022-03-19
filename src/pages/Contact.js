@@ -5,12 +5,12 @@ const Contact = () => {
   return (
     <>
       <AppBar title="تماس با ما" />
-      <div className="flex flex-col md:flex-row items-center justify-between w-[80%] m-auto my-10">
+      <div className="flex flex-col md:flex-row items-center justify-between w-[80%] m-auto my-10 md:mb-12">
         <div className="w-[100%] lg:w-[70%]">
-          <h2 className="text-2xl lg:text-4xl mb-3">
+          <h2 className="text-2xl lg:text-4xl mb-3 dark:text-white">
             به صفحه تماس با ما خوش آمدید
           </h2>
-          <h2 className="text-xl mb-8 text-gray-500">
+          <h2 className="text-xl mb-8 text-gray-500 dark:text-white">
             این صفحه در حال تکمیل میباشد
           </h2>
           <form className="flex flex-wrap md:w-[75%] w-[100%]">

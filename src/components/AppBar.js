@@ -16,7 +16,7 @@ function AppBar({ title }) {
             <img src={logo} alt="Logo"></img>
           </div>
         </Link>
-        <div className="font-bold text-slate-800 text-lg">{title}</div>
+        <div className="font-bold text-slate-800 dark:text-white text-lg">{title}</div>
         <Link to={"/cart"}>
           <div className="bg-white p-2 rounded-md shadow-lg relative">
             <svg

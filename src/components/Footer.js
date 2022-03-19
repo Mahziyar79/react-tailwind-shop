@@ -6,8 +6,8 @@ function Footer() {
   return (
     <>
       {/* footer */}
-      <div className="md:flex hidden bg-white w-full items-center justify-between">
-        <div className="p-10 flex gap-x-6 w-full justify-evenly shadow-[0_-4px_8px_0_rgba(0,0,0,0.1)]">
+      <div className="md:flex hidden bg-white dark:bg-slate-700 w-full items-center justify-between">
+        <div className="p-10 flex gap-x-6 w-full justify-evenly shadow-[0_-4px_8px_0_rgba(0,0,0,0.1)] dark:text-white">
           <div className="w-[40%]">
             <img className="w-[180px] mb-4" src={footerLogo} alt="" />
             <p>
@@ -75,7 +75,7 @@ function Footer() {
             </div>
           </div>
           <div>
-            <h3 className="mb-2 text-lg text-slate-800">محصولات</h3>
+            <h3 className="mb-2 text-lg text-slate-800 dark:text-white">محصولات</h3>
             <div className="h-[2px] w-10 bg-orange-600 mb-3"></div>
             <ul className="flex flex-col gap-y-2">
               <li>تلفن همراه</li>
@@ -84,7 +84,7 @@ function Footer() {
             </ul>
           </div>
           <div>
-            <h2 className="text-lg text-slate-800 mb-2">موقعیت شرکت</h2>
+            <h2 className="text-lg text-slate-800 mb-2 dark:text-white">موقعیت شرکت</h2>
             <div className="h-[2px] w-10 bg-orange-600 mb-3"></div>
             <div className="flex">
               <img className="w-[200px]" src={map} alt="" />

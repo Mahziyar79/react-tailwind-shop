@@ -11,7 +11,7 @@ function Home() {
   const [selectedBrandFilter, setSelectedBrandFilter] = useState([]);
   const [selectedPriceFilter, setSelectedPriceFilter] = useState([]);
   return (
-    <div>
+    <div className="">
       <AppBar title="فروشگاه" />
       <MobileHeadFilter
         selectedHeaderFilter={selectedHeaderFilter}
@@ -21,7 +21,7 @@ function Home() {
         setSelectedPriceFilter={setSelectedPriceFilter}
       />
 
-      <div className="2xl:container 2xl:max-w-screen-2xl 2xl:mx-auto grid grid-cols-12 grid-rows-[55px_minmax(500px,_1fr)] md:gap-8 md:pb-8">
+      <div className="2xl:container 2xl:max-w-screen-2xl 2xl:mx-auto md:grid grid-cols-12 grid-rows-[55px_minmax(500px,_1fr)] md:gap-8 md:pb-8">
         <ShopSidebar
           selectedBrandFilter={selectedBrandFilter}
           setSelectedBrandFilter={setSelectedBrandFilter}

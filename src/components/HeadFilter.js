@@ -4,7 +4,7 @@ function HeadFilter({selectedHeaderFilter,setSelectedHeaderFilter}) {
   return (
     <>
       <div className="hidden md:block xl:col-span-10 md:col-span-9 ml-4 mt-4">
-        <div className="bg-white px-4 flex items-center gap-x-4 text-gray-400">
+        <div className="bg-white dark:bg-gray-600 px-4 flex items-center gap-x-4 text-gray-400">
           <div className="bg-orange-200 p-2 rounded-md flex items-center justify-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +24,7 @@ function HeadFilter({selectedHeaderFilter,setSelectedHeaderFilter}) {
           <button
             onClick={() => setSelectedHeaderFilter("popular")}
             className={`py-4 relative ${
-              selectedHeaderFilter === "popular" ? "text-black" : ""
+              selectedHeaderFilter === "popular" ? "text-black dark:text-white" : ""
             }`}
           >
             <span>محبوب ترین</span>
@@ -35,7 +35,7 @@ function HeadFilter({selectedHeaderFilter,setSelectedHeaderFilter}) {
           <button
             onClick={() => setSelectedHeaderFilter("highPrice")}
             className={`py-4 relative ${
-              selectedHeaderFilter === "highPrice" ? "text-black" : ""
+              selectedHeaderFilter === "highPrice" ? "text-black dark:text-white" : ""
             }`}
           >
             <span>گران ترین</span>
@@ -46,7 +46,7 @@ function HeadFilter({selectedHeaderFilter,setSelectedHeaderFilter}) {
           <button
             onClick={() => setSelectedHeaderFilter("LowPrice")}
             className={`py-4 relative ${
-              selectedHeaderFilter === "LowPrice" ? "text-black" : ""
+              selectedHeaderFilter === "LowPrice" ? "text-black dark:text-white" : ""
             }`}
           >
             <span>
@@ -60,7 +60,7 @@ function HeadFilter({selectedHeaderFilter,setSelectedHeaderFilter}) {
           <button
             onClick={() => setSelectedHeaderFilter("seller")}
             className={`py-4 relative ${
-              selectedHeaderFilter === "seller" ? "text-black" : ""
+              selectedHeaderFilter === "seller" ? "text-black dark:text-white" : ""
             }`}
           >
             <span>پرفروش ترین</span>
