@@ -2,14 +2,16 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/images/Logo.png";
 import { useSelector } from "react-redux";
+import toggleOn from "../assets/images/toggle-on.png";
+import toggleOff from "../assets/images/toggle-off.png";
 
-function Header() {
+function Header({ darkToggle, setDarkToggle }) {
   const productData = useSelector((state) => state.productReducer.cart);
-  const [searchValue,setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState("");
   const navigate = useNavigate();
   const sendSearchValue = () => {
-    navigate('/search', { state: searchValue });
-  }
+    navigate("/search", { state: searchValue });
+  };
 
   return (
     <>
@@ -41,6 +43,21 @@ function Header() {
             </nav>
           </div>
           <div className="max-w-lg flex items-center">
+            <span onClick={() => setDarkToggle(!darkToggle)}>
+              {darkToggle ? (
+                <img
+                  className="w-10 ml-4 cursor-pointer"
+                  src={toggleOn}
+                  alt="toggleon"
+                />
+              ) : (
+                <img
+                  className="w-10 ml-4 cursor-pointer"
+                  src={toggleOff}
+                  alt="toggleoff"
+                />
+              )}
+            </span>
             <Link to={"/signin"}>
               <div className="text-gray-600 relative cursor-pointer flex gap-x-1 items-center ml-4 lg:ml-6">
                 <svg
@@ -58,7 +75,6 @@ function Header() {
                   />
                 </svg>
                 <span>ورود</span>
-
               </div>
             </Link>
             <Link to={"/cart"}>
@@ -83,7 +99,10 @@ function Header() {
               </div>
             </Link>
             <div className="relative lg:w-96 lg:flex-1 mr-4 lg:mr-6">
-              <span className="absolute cursor-pointer right-1 top-2 text-gray-400" onClick={()=>sendSearchValue()}>
+              <span
+                className="absolute cursor-pointer right-1 top-2 text-gray-400"
+                onClick={() => sendSearchValue()}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
@@ -104,7 +123,7 @@ function Header() {
                 type="text"
                 className="focus:outline-none shadow-smtext-sm pr-12 bg-stone-100 p-2 rounded-md w-full"
                 value={searchValue}
-                onChange={(e)=>setSearchValue(e.target.value)}
+                onChange={(e) => setSearchValue(e.target.value)}
               />
             </div>
           </div>

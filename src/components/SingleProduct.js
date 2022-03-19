@@ -7,7 +7,7 @@ function SingleProduct({ product }) {
   return (
     <>
       {/* single product */}
-      <div className="bg-white rounded-md shadow-md p-2 relative">
+      <div className="bg-white dark:bg-gray-600 rounded-md shadow-md p-2 relative">
         {/* intrested */}
         <div className="absolute top-1 right-1 bg-gray-300 p-2 rounded-full">
           <svg
@@ -33,7 +33,7 @@ function SingleProduct({ product }) {
         </div>
         {/* color section */}
         <div className="flex items-center justify-between my-2">
-          <p className="text-gray-400 text-sm">{product.category}</p>
+          <p className="text-gray-400 text-sm dark:text-gray-200">{product.category}</p>
           <div className="flex">
             {product.colors.map((color, index) => (
               <div
@@ -47,17 +47,17 @@ function SingleProduct({ product }) {
         {/* description */}
         <div>
           <div className="md:flex-1">
-            <p className="text-black text-bold text-sm my-2">{product.title}</p>
+            <p className="text-black text-bold text-sm my-2 dark:text-white">{product.title}</p>
           </div>
           <div className="md:flex-1">
-            <p className="text-bold text-sm text-left text-red-600">
+            <p className="dark:text-white text-bold text-sm text-left text-red-600">
               {SeparateNumbers(product.price)} تومان
             </p>
           </div>
         </div>
         <hr className="mt-2" />
         {/* add to cart */}
-        <div className="text-center mt-1 py-1 text-red-500 cursor-pointer">
+        <div className="dark:text-white text-center mt-1 py-1 text-red-500 cursor-pointer">
           <Link to={`/product/${queryUrl}`} state={{ product }}>
             <button>مشاهده و سفارش</button>
           </Link>
