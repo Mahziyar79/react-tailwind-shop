@@ -18,6 +18,7 @@ function Cart() {
     return reducePriceNumb;
   };
 
+
   return (
     <>
       <AppBar title="سبد خرید" />

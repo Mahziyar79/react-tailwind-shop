@@ -1,17 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/images/Logo.png";
 import { useSelector } from "react-redux";
 import toggleOn from "../assets/images/toggle-on.png";
 import toggleOff from "../assets/images/toggle-off.png";
+import { useDarkMode,useDarkModeActions } from "../Context/DarkProvider";
 
-function Header({ darkToggle, setDarkToggle }) {
+function Header() {
   const productData = useSelector((state) => state.productReducer.cart);
   const [searchValue, setSearchValue] = useState("");
   const navigate = useNavigate();
   const sendSearchValue = () => {
     navigate("/search", { state: searchValue });
   };
+
+  const darkMode = useDarkMode();
+  const darkModeDispatch = useDarkModeActions();
+
+
+  // useEffect(()=>{
+  //   darkModeDispatch(JSON.parse(localStorage.getItem('dark')));
+
+  // },[])
+
+  // useEffect(()=>{
+  //   localStorage.setItem('dark',JSON.stringify(darkMode))
+  // },[darkMode])
+
 
   return (
     <>
@@ -43,8 +58,8 @@ function Header({ darkToggle, setDarkToggle }) {
             </nav>
           </div>
           <div className="max-w-lg flex items-center">
-            <span onClick={() => setDarkToggle(!darkToggle)}>
-              {darkToggle ? (
+            <span onClick={() => darkModeDispatch(!darkMode)}>
+              {darkMode ? (
                 <img
                   className="w-10 ml-4 cursor-pointer"
                   src={toggleOn}

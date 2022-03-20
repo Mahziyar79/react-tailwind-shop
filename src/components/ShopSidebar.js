@@ -34,7 +34,7 @@ function ShopSidebar({
   return (
     <>
       {/* sidebar */}
-      <div className={`${isShow} md:col-span-3 xl:col-span-2 md:block col-span-2 row-span-2 pb-4`}>
+      <div className={`${isShow} md:col-span-3 xl:col-span-2 md:block col-span-2 row-span-2 pb-4 ml-4 md:ml-0`}>
         <div className="bg-white p-4 rounded-md mr-4 mt-4 sticky top-20">
           {/* category */}
           <div className={`${isCategoryShow}`}>

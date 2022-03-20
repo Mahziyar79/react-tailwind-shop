@@ -1,22 +1,45 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/Logo.png";
-import { useSelector } from 'react-redux'
-
+import { useSelector } from "react-redux";
+import toggleOn from "../assets/images/toggle-on.png";
+import toggleOff from "../assets/images/toggle-off.png";
+import { useDarkMode,useDarkModeActions } from "../Context/DarkProvider";
 
 function AppBar({ title }) {
-  const productData = useSelector((state) => state.productReducer.cart)
+  const productData = useSelector((state) => state.productReducer.cart);
+
+  const darkMode = useDarkMode();
+  const darkModeDispatch = useDarkModeActions();
+
 
   return (
     <>
       {/* app bar */}
       <div className="md:hidden p-4 flex items-center justify-between">
-        <Link to={'/'}>
+        <Link to={"/"}>
           <div>
             <img src={logo} alt="Logo"></img>
           </div>
         </Link>
-        <div className="font-bold text-slate-800 dark:text-white text-lg">{title}</div>
+        <div className="font-bold text-slate-800 dark:text-white text-lg">
+          {title}
+        </div>
+        <span onClick={() => darkModeDispatch(!darkMode)}>
+          {darkMode ? (
+            <img
+              className="w-10 ml-4 cursor-pointer"
+              src={toggleOn}
+              alt="toggleon"
+            />
+          ) : (
+            <img
+              className="w-10 ml-4 cursor-pointer"
+              src={toggleOff}
+              alt="toggleoff"
+            />
+          )}
+        </span>
         <Link to={"/cart"}>
           <div className="bg-white p-2 rounded-md shadow-lg relative">
             <svg
