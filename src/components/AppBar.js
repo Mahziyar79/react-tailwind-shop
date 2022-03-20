@@ -18,23 +18,23 @@ function AppBar({ title }) {
       <div className="md:hidden p-4 flex items-center justify-between">
         <Link to={"/"}>
           <div>
-            <img src={logo} alt="Logo"></img>
+            <img className="w-20" src={logo} alt="Logo"></img>
           </div>
         </Link>
-        <div className="font-bold text-slate-800 dark:text-white text-lg">
+        <div className="font-bold text-slate-800 mx-1 dark:text-white text-base">
           {title}
         </div>
         <div className="flex gap-x-5 items-center">
           <span onClick={() => darkModeDispatch(!darkMode)}>
             {darkMode ? (
               <img
-                className="w-10 cursor-pointer"
+                className="w-8 cursor-pointer"
                 src={toggleOn}
                 alt="toggleon"
               />
             ) : (
               <img
-                className="w-10 cursor-pointer"
+                className="w-8 cursor-pointer"
                 src={toggleOff}
                 alt="toggleoff"
               />

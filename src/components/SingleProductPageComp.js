@@ -17,13 +17,13 @@ function SingleProductPageComp({ product }) {
     }
   };
   return (
-    <div className="md:bg-white rounded-md md:p-4 md:mt-5">
+    <div className="md:dark:bg-slate-700 rounded-md md:p-4 md:mt-5">
       {/* single product */}
       <div className="flex justify-center flex-col lg:flex-row">
         <div className="md:flex-row flex flex-col md:flex-auto">
           {/* product image */}
-          <div className="w-4/5 md:w-1/3 max-w-xs md:ml-10 md:mr-0 md:my-0 m-auto my-6 md:flex md:flex-col">
-            <img className="h-auto w-full" src={product.image} alt="Logo" />
+          <div className="w-4/5 md:w-1/3 max-w-xs md:ml-10 md:mr-0 md:my-0 m-auto my-6 md:flex md:flex-col dark:rounded-lg md:dark:bg-transparent ">
+            <img className="h-auto md:dark:bg-slate-600 md:dark:rounded-lg w-full" src={product.image} alt="Logo" />
             <div className="justify-around mt-3 hidden md:flex gap-x-3">
               <div className="border-2 border-gray-300 rounded-lg p-1">
                 <img className="h-auto w-full" src={productImage} alt="" />
@@ -39,7 +39,7 @@ function SingleProductPageComp({ product }) {
           <div>
             {/* product title */}
             <div>
-              <p className="text-center lg:text-xl md:text-right">
+              <p className="text-center lg:text-xl md:text-right dark:text-white text-lg md:dark:text-white">
                 {product.title}
               </p>
               <p className="text-center lg:text-base text-gray-400 mt-2 md:text-right">
@@ -49,7 +49,9 @@ function SingleProductPageComp({ product }) {
             <hr className="mt-5 hidden md:block" />
             {/* color section */}
             <div className="flex items-center justify-around md:justify-start my-5">
-              <p className="text-gray-500">انتخاب رنگ :</p>
+              <p className="text-gray-500 dark:text-white md:dark:text-white">
+                انتخاب رنگ :
+              </p>
               <div className="flex mr-4">
                 {product.colors.map((color, index) => (
                   <div
@@ -77,14 +79,14 @@ function SingleProductPageComp({ product }) {
               </div>
             </div>
             {/* product shipping info */}
-            <div className="md:hidden flex items-center justify-center gap-3 flex-wrap">
+            <div className="md:hidden flex items-center justify-center gap-3 flex-wrap dark:text-white">
               <div className="flex items-center justify-center flex-auto">
                 <span>
                   <svg
                     width="20"
                     height="19"
                     viewBox="0 0 20 19"
-                    fill="none"
+                    fill="#fff"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <circle cx="12" cy="8" r="8" fill="#E2E2E2" />
@@ -133,7 +135,7 @@ function SingleProductPageComp({ product }) {
                     width="21"
                     height="19"
                     viewBox="0 0 21 19"
-                    fill="none"
+                    fill="#fff"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <circle cx="13" cy="8" r="8" fill="#E2E2E2" />
@@ -154,7 +156,7 @@ function SingleProductPageComp({ product }) {
                     width="20"
                     height="21"
                     viewBox="0 0 20 21"
-                    fill="none"
+                    fill="#fff"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <circle cx="12" cy="8" r="8" fill="#E2E2E2" />
@@ -215,26 +217,26 @@ function SingleProductPageComp({ product }) {
               </div>
             </div>
             {/* product info */}
-            <div className="mx-3 mt-5 text-slate-800 bg-white p-4 md:mb-0 rounded-lg md:bg-inherit md:p-0 mb-24">
+            <div className="mx-3 mt-5 text-slate-800 dark:bg-slate-700 md:dark:bg-slate-800 md:dark:p-4 dark:text-white bg-white p-4 md:mb-0 rounded-lg md:bg-inherit md:p-0 mb-24">
               <p className="md:text-lg text-base">ویژگی های کالا :</p>
               <ul className="mt-4 text-sm list-disc flex flex-col gap-y-2 marker:text-orange-500 list-inside">
                 <li>
-                  <span className="text-slate-600 lg:text-base">
+                  <span className="text-slate-600 dark:text-gray-200 lg:text-base">
                     حافظه داخلی :
                   </span>
-                  <span>128 گیگابایت</span>
+                  <span> 128 گیگابایت</span>
                 </li>
                 <li>
-                  <span className="text-slate-600 lg:text-base">
+                  <span className="text-slate-600 dark:text-gray-200 lg:text-base">
                     بازه اندازه صفحه نمایش :
                   </span>
-                  <span>0.6 اینچ و بزرگتر</span>
+                  <span> 0.6 اینچ و بزرگتر</span>
                 </li>
                 <li>
-                  <span className="text-slate-600 lg:text-base">
+                  <span className="text-slate-600 dark:text-gray-200 lg:text-base">
                     شبکه های ارتباطی :
                   </span>
-                  <span>2G , 3G , 4G , 5G</span>
+                  <span> 2G , 3G , 4G , 5G</span>
                 </li>
               </ul>
             </div>
@@ -243,7 +245,7 @@ function SingleProductPageComp({ product }) {
         {/* cart Info */}
         <div className="lg:w-1/4 w-full mt-4 lg:mt-0 hidden md:block">
           <div className="bg-gray-200 xl:p-5 p-3 rounded-md shadow-md flex flex-col gap-y-6">
-            <div className="flex flex-col items-start gap-3 flex-wrap">
+            <div className="flex flex-col items-start gap-3 flex-wrap ">
               <div className="flex items-center justify-start">
                 <span>
                   <svg

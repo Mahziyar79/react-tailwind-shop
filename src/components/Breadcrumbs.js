@@ -8,12 +8,12 @@ const Breadcrumbs = ({ title }) => {
       <Link to="/">
         <span className="text-sm text-orange-500">خانه</span>
       </Link>
-      <span>
+      <span className="dark:text-white text-slate-800">
         <svg
           width="7"
           height="10"
           viewBox="0 0 7 10"
-          fill="none"
+          fill="CurrentColor"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -25,12 +25,12 @@ const Breadcrumbs = ({ title }) => {
       <Link to="/products">
         <span className="text-sm text-orange-500">دسته بندی</span>
       </Link>
-      <span>
+      <span className="dark:text-white text-slate-800">
         <svg
           width="7"
           height="10"
           viewBox="0 0 7 10"
-          fill="none"
+          fill="CurrentColor"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -39,7 +39,7 @@ const Breadcrumbs = ({ title }) => {
           />
         </svg>
       </span>
-      <span className="text-sm text-gray-400">{title}</span>
+      <span className="text-sm text-gray-400 dark:text-white md:dark:text-white">{title}</span>
     </>
   );
 };
