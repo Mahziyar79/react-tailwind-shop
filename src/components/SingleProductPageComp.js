@@ -23,7 +23,7 @@ function SingleProductPageComp({ product }) {
         <div className="md:flex-row flex flex-col md:flex-auto">
           {/* product image */}
           <div className="w-4/5 md:w-1/3 max-w-xs md:ml-10 md:mr-0 md:my-0 m-auto my-6 md:flex md:flex-col dark:bg-slate-600 dark:rounded-lg md:dark:bg-transparent ">
-            <img className="h-auto dark:bg-slate-600 bg-white rounded-lg md:dark:rounded-lg w-full dark:rounded-lg" src={product.image} alt="Logo" />
+            <img className="h-auto dark:bg-slate-600 bg-white rounded-lg md:h-[300px] md:object-contain md:dark:rounded-lg w-full dark:rounded-lg" src={product.image} alt="Logo" />
             <div className="justify-around mt-3 hidden md:flex gap-x-3">
               <div className="border-2 border-gray-300 rounded-lg p-1">
                 <img className="h-auto w-full" src={productImage} alt="" />
