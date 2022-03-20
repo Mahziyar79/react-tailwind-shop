@@ -6,10 +6,10 @@ function CategorySidebar() {
     <>
       {/* sidebar */}
       <div className="hidden md:col-span-3 xl:col-span-2 md:block col-span-2 row-span-2 pb-4">
-        <div className="bg-white p-4 rounded-md mr-4 mt-4 sticky top-20">
+        <div className="bg-white p-4 rounded-md mr-4 mt-4 sticky top-20 dark:bg-slate-700">
           {/* category */}
           <div>
-            <p className="text-orange-600 text-lg">دسته بندی</p>
+            <p className="text-orange-600 dark:text-white text-lg">دسته بندی</p>
             <div>
               <div className="flex items-center text-slate-700 mt-4 text-sm">
                 <div className="bg-gray-200 relative w-7 h-7 rounded-full -top-2">
@@ -28,7 +28,7 @@ function CategorySidebar() {
                     />
                   </svg>
                 </div>
-                <p className="mr-1 hover:bg-gray-50 w-full p-2 rounded-lg pl-0">
+                <p className="mr-1 hover:bg-gray-50 dark:text-white w-full p-2 rounded-lg pl-0">
                   <Link to={"/"}>تلفن همراه</Link>
                 </p>
               </div>
@@ -49,7 +49,7 @@ function CategorySidebar() {
                     />
                   </svg>
                 </div>
-                <p className="mr-1.5 hover:bg-gray-50 w-full p-2 rounded-lg pl-0">
+                <p className="mr-1.5 hover:bg-gray-50 dark:text-white w-full p-2 rounded-lg pl-0">
                   <Link to={"/"}>لپ تاپ</Link>
                 </p>
               </div>
@@ -70,7 +70,7 @@ function CategorySidebar() {
                     />
                   </svg>
                 </div>
-                <p className="mr-1.5 hover:bg-gray-50 w-full p-2 rounded-lg pl-0">
+                <p className="mr-1.5 hover:bg-gray-50 dark:text-white w-full p-2 rounded-lg pl-0">
                   <Link to={"/"}>ساعت هوشمندی</Link>
                 </p>
               </div>

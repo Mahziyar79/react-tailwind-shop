@@ -243,9 +243,9 @@ function SingleProductPageComp({ product }) {
           </div>
         </div>
         {/* cart Info */}
-        <div className="lg:w-1/4 w-full mt-4 lg:mt-0 hidden md:block">
-          <div className="bg-gray-200 xl:p-5 p-3 rounded-md shadow-md flex flex-col gap-y-6">
-            <div className="flex flex-col items-start gap-3 flex-wrap ">
+        <div className="lg:w-1/4 w-full mt-4 lg:mt-0 hidden md:block ">
+          <div className="bg-gray-200 xl:p-5 p-3 rounded-md shadow-md flex flex-col gap-y-6 dark:bg-slate-800 dark:text-white">
+            <div className="flex flex-col items-start gap-3 flex-wrap">
               <div className="flex items-center justify-start">
                 <span>
                   <svg
@@ -383,7 +383,7 @@ function SingleProductPageComp({ product }) {
               </div>
             </div>
             <div>
-              <p className="text-red-500 text-lg text-left">
+              <p className="text-red-500 dark:text-white text-lg text-left">
                 {SeparateNumbers(product.price)} تومان
               </p>
             </div>
@@ -399,14 +399,14 @@ function SingleProductPageComp({ product }) {
         </div>
         {/* bottom navigation */}
         <div className="md:hidden fixed bottom-0 left-0 right-0 w-full">
-          <div className="bg-white p-3 flex items-center justify-between shadow-[0_-4px_8px_0_rgba(0,0,0,0.1)]">
+          <div className="bg-white dark:bg-slate-700 p-3 flex items-center justify-between shadow-[0_-4px_8px_0_rgba(0,0,0,0.1)]">
             <button
               onClick={() => dispatchProduct()}
               className="bg-red-400 rounded-md shadow-md text-white py-2 px-4"
             >
               افزودن به سبد خرید
             </button>
-            <div className="flex flex-wrap items-end gap-x-1">
+            <div className="flex flex-wrap items-end gap-x-1 dark:text-white">
               <span> {SeparateNumbers(product.price)}</span>
               <span>تومان</span>
             </div>
