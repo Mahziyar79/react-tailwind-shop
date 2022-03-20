@@ -5,7 +5,7 @@ const Signin = () => {
   return (
     <>
       <AppBar title="ثبت نام / ورود" />
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center md:my-16">
         <div className="flex flex-col gap-y-6 border border-gray-300 rounded-md p-10 my-20 lg:w-[35%] shadow-sm bg-white">
           <h2 className="text-center text-4xl text-orange-600">دیجی تایز</h2>
           <h3 className="my-4">ورود / ثبت نام</h3>

@@ -18,12 +18,11 @@ function Cart() {
     return reducePriceNumb;
   };
 
-
   return (
     <>
       <AppBar title="سبد خرید" />
       {/* cart */}
-        <div className="2xl:container 2xl:max-w-screen-2xl 2xl:mx-auto p-3 md:mb-10 2xl:mb-48">
+        <div className="2xl:container 2xl:max-w-screen-2xl 2xl:mx-auto p-3 md:mb-10 2xl:mb-52">
           <div className="flex flex-col md:flex-row justify-between md:px-5 lg:px-10">
             <div
               className={`flex flex-col gap-y-4  md:mt-4 ${
