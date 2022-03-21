@@ -14,10 +14,15 @@ function MobileHeadFilter({
   const filterPopularHandler = (name, popular) => {
     setFilterPopularName(name);
     setSelectedHeaderFilter(popular);
-    setFilterPopular(false);
+    setFilterPopular(false)
   };
   const filterPriceHandler = () => {
     setFilterPrice(!filterPrice);
+    setFilterPopular(false)
+  };
+  const popularHandler = () => {
+    setFilterPopular(!filterPopular);
+    setFilterPrice(false)
   };
 
   return (
@@ -25,7 +30,7 @@ function MobileHeadFilter({
       {/* filter sort */}
       <div className="md:hidden px-4 flex items-center justify-between gap-x-2 mb-4">
         <div
-          onClick={() => setFilterPopular(!filterPopular)}
+          onClick={() => popularHandler()}
           className="bg-white flex items-center justify-center gap-x-2 p-2 rounded-md w-full cursor-pointer shadow-md"
         >
           <span>
