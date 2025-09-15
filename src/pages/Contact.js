@@ -1,6 +1,7 @@
-import contactImg from "../assets/images/contact-us.png";
 import AppBar from "../components/AppBar";
 import HomeBottomNav from "../components/HomeBottomNav";
+import contactImg from "../assets/images/contact-us.png";
+
 const Contact = () => {
   return (
     <>
@@ -11,21 +12,21 @@ const Contact = () => {
             به صفحه تماس با ما خوش آمدید
           </h2>
           <h2 className="text-xl mb-8 text-gray-500 dark:text-white">
-            این صفحه در حال تکمیل میباشد
+            این صفحه در حال تکمیل می باشد
           </h2>
           <form className="flex flex-wrap md:w-[75%] w-[100%]">
             <div className="w-full flex flex-col md:flex-row gap-y-3">
               <div className="md:ml-2 flex-1">
                 <input
                   type="text"
-                  className="p-2 rounded-md shadow-sm w-[100%] border border-gray-300"
+                  className="p-2 rounded-md shadow-sm w-[100%] border border-gray-300 dark:bg-slate-800 dark:text-white"
                   placeholder="ایمیل خود را وارد کنید"
                 />
               </div>
               <div className="flex-1">
                 <input
                   type="text"
-                  className="p-2 rounded-md shadow-sm w-[100%] border border-gray-300"
+                  className="p-2 rounded-md shadow-sm w-[100%] border border-gray-300 dark:bg-slate-800 dark:text-white"
                   placeholder="ایمیل خود را وارد کنید"
                 />
               </div>
@@ -33,7 +34,7 @@ const Contact = () => {
             <div className="w-full">
               <textarea
                 placeholder="پیام خود را وارد کنید"
-                className="mt-4 p-2 rounded-md shadow-sm w-[100%] border border-gray-300"
+                className="mt-4 p-2 rounded-md shadow-sm w-[100%] border border-gray-300 dark:bg-slate-800 dark:text-white"
                 rows="5"
                 cols="60"
               ></textarea>
