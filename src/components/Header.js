@@ -1,15 +1,17 @@
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useDarkMode, useDarkModeActions } from "../Context/DarkProvider";
+
 import logo from "../assets/images/Logo.png";
-import { useSelector } from "react-redux";
-import toggleOn from "../assets/images/toggle-on.png";
 import toggleOff from "../assets/images/toggle-off.png";
-import { useDarkMode,useDarkModeActions } from "../Context/DarkProvider";
+import toggleOn from "../assets/images/toggle-on.png";
+import { useSelector } from "react-redux";
 
 function Header() {
   const productData = useSelector((state) => state.productReducer.cart);
   const [searchValue, setSearchValue] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
   const sendSearchValue = () => {
     navigate("/search", { state: searchValue });
   };
@@ -17,6 +19,12 @@ function Header() {
   const darkMode = useDarkMode();
   const darkModeDispatch = useDarkModeActions();
 
+  const menuItem = [
+    { title: "خانه", link: "/" },
+    { title: "دسته بندی", link: "/products" },
+    { title: "ارتباط با ما", link: "/about" },
+    { title: "تماس با ما", link: "/contact" },
+  ];
 
   // useEffect(()=>{
   //   darkModeDispatch(JSON.parse(localStorage.getItem('dark')));
@@ -26,7 +34,6 @@ function Header() {
   // useEffect(()=>{
   //   localStorage.setItem('dark',JSON.stringify(darkMode))
   // },[darkMode])
-
 
   return (
     <>
@@ -42,18 +49,18 @@ function Header() {
                 <li>
                   <img src="/assets/images/Logo.png" alt="" />
                 </li>
-                <li className="hover:bg-slate-100 dark:hover:bg-slate-800 py-2 lg:px-3 md:px-1 rounded-md">
-                  <Link to={"/"}>خانه</Link>
-                </li>
-                <li className="hover:bg-slate-100 py-2 dark:hover:bg-slate-800 lg:px-3 md:px-1 rounded-md">
-                  <Link to={"/products"}>دسته بندی</Link>
-                </li>
-                <li className="hover:bg-slate-100 py-2 dark:hover:bg-slate-800 lg:px-3 md:px-1 rounded-md">
-                  <Link to={"/about"}>ارتباط با ما</Link>
-                </li>
-                <li className="hover:bg-slate-100 py-2 dark:hover:bg-slate-800 lg:px-3 md:px-1 rounded-md">
-                  <Link to={"/contact"}>تماس با ما</Link>
-                </li>
+                {menuItem.map((m, i) => (
+                  <li
+                    key={i}
+                    className={`hover:bg-slate-100 dark:hover:bg-slate-800 py-2 lg:px-3 md:px-1 rounded-md ${
+                      location.pathname === m.link
+                        ? "dark:bg-slate-600 bg-slate-100"
+                        : ""
+                    }`}
+                  >
+                    <Link to={m.link}>{m.title}</Link>
+                  </li>
+                ))}
               </ul>
             </nav>
           </div>
@@ -115,7 +122,7 @@ function Header() {
             </Link>
             <div className="relative lg:w-96 lg:flex-1 mr-4 lg:mr-6">
               <span
-                className="absolute cursor-pointer right-1 top-2 text-gray-400"
+                className="absolute cursor-pointer right-2 top-2 text-gray-400"
                 onClick={() => sendSearchValue()}
               >
                 <svg
@@ -136,7 +143,7 @@ function Header() {
               <input
                 placeholder="جستجو نام محصول ، نام برند و..."
                 type="text"
-                className="focus:outline-none shadow-smtext-sm pr-12 bg-stone-100 p-2 rounded-md w-full"
+                className="focus:outline-none shadow-sm text-sm pr-12 bg-stone-100 dark:bg-gray-600 dark:text-white p-2 rounded-md w-full"
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
               />

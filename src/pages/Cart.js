@@ -1,10 +1,10 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import SeparateNumbers from "../common/SeparateNumbers";
 import AppBar from "../components/AppBar";
 import CartItem from "../components/CartItem";
 import HomeBottomNav from "../components/HomeBottomNav";
+import { Link } from "react-router-dom";
+import React from "react";
+import SeparateNumbers from "../common/SeparateNumbers";
+import { useSelector } from "react-redux";
 
 function Cart() {
   const products = useSelector((state) => state.productReducer.cart);
@@ -56,7 +56,7 @@ function Cart() {
 
             {products.length ? (
               <div className="mt-4 md:w-[45%] md:mr-5 lg:mr-0 lg:w-[35%]">
-                <div className="bg-white rounded-md p-3 md:p-5 flex flex-col gap-y-3">
+                <div className="bg-white dark:bg-slate-700 dark:text-white rounded-md p-3 md:p-5 flex flex-col gap-y-3">
                   <div className="flex items-center justify-between">
                     <span>مجموع قیمت : </span>
                     <span className="text-orange-700">
@@ -67,7 +67,7 @@ function Cart() {
                     <span className="text-sm">کد تخفیف دارید؟</span>
                     <div className="relative">
                       <input
-                        className="border-solid border-2 w-44 rounded-sm p-1 focus:outline-none"
+                        className="border-solid border-2 w-44 rounded-sm p-1 focus:outline-none dark:bg-slate-800 dark:border-slate-800"
                         type="text"
                         placeholder="123ABC"
                       />
@@ -89,12 +89,12 @@ function Cart() {
                 </div>
                 {/* buy process */}
                 <div className="md:block hidden mt-3">
-                  <button className="bg-red-400 w-full rounded-md border-2 border-red-400 text-white p-2 hover:bg-white hover:text-red-400 transition-all duration-200">
+                  <button className="bg-red-400 w-full rounded-md border-2 border-red-400 text-white p-2 hover:bg-white dark:hover:bg-slate-800 hover:text-red-400 transition-all duration-200">
                     ادامه فرآیند خرید
                   </button>
                 </div>
                 <div className="md:block hidden mt-3">
-                  <button className="text-red-400 w-full rounded-md border-2 border-red-400 hover:bg-red-400 hover:text-white transition-all duration-200 bg-white p-2">
+                  <button className="text-red-400 w-full rounded-md border-2 border-red-400 transition-all duration-200 p-2">
                     انصراف از خرید
                   </button>
                 </div>
